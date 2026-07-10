@@ -1,0 +1,44 @@
+platform: airbnb
+search_url: "https://www.airbnb.com/s/{city}/homes"
+listing:
+  css: 'div[data-testid="card-container"]'
+
+fields:
+
+  cardId:
+    css: a
+    attribute: href
+    regex: "/rooms/(\\d+)"
+
+  url:
+    css: a
+    attribute: href
+
+  title:
+    css: 'div[data-testid="listing-card-title"]'
+
+  price:
+    css: 'span[data-testid="price"]'
+    type: currency
+
+  rating:
+    css: 'span[aria-hidden="true"]'
+    regex: '([0-9.]+)'
+    type: float
+
+  reviews:
+    css: span
+    regex: '\(([0-9]+)\)'
+    type: int
+
+  beds:
+    css: div
+    regex: '([0-9]+)\s+bed'
+
+  bedrooms:
+    css: div
+    regex: '([0-9]+)\s+bedroom'
+
+  bathrooms:
+    css: div
+    regex: '([0-9]+)\s+bath'

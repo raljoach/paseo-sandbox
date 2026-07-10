@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paseo"
+version = "0.1.0"
+description = "Vacation rental search and recommendation platform"
+requires-python = ">=3.12"
+
+dependencies = [
+    "playwright",
+    "pandas",
+    "pyyaml",
+    "dash",
+    "plotly",
+    "scikit-learn"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "dashboard*",
+    "geo*",
+    "model*",
+    "scraper*",
+    "storage*"
+]
+exclude = [
+    "data*",
+    "config*",
+    "analysis*",
+    "extractors*",
+    "node_modules*"
+]

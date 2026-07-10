@@ -1,0 +1,42 @@
+listing:
+  id:
+    type: string
+
+  url:
+    type: string
+
+  title:
+    type: string
+
+  description:
+    type: string
+
+  priceNum:
+    type: number
+
+  perNight:
+    type: number
+
+  rating:
+    type: number
+
+  reviewCount:
+    type: integer
+
+  roomsCount:
+    type: integer
+
+  bedsCount:
+    type: integer
+
+  bathCount:
+    type: number
+
+  guestCount:
+    type: integer
+
+  lat:
+    type: number
+
+  long:
+    type: number
