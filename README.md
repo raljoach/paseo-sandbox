@@ -12,3 +12,14 @@ Paseo is a tool for collecting Airbnb listings, analyzing value, capturing user 
 
 pip install -r requirements.txt
 npm install
+cd paseo        
+python -m dashboard.app
+
+The data/ directory is generated and intentionally ignored by git.
+
+It contains:
+
+scraped Airbnb listings
+processed features
+likes
+model predictions

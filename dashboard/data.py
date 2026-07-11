@@ -1,9 +1,11 @@
 import pandas as pd
 from pathlib import Path
+
 from model.likes import load_likes
 
 
 BASE = Path(__file__).parent.parent
+
 
 PREDICTIONS = (
     BASE
@@ -20,24 +22,35 @@ FEATURES = (
 )
 
 
-def load_dataframe():
+def load_dataframe(current_airbnb=None):
+
+    #
+    # Load best available dataset
+    #
 
     if PREDICTIONS.exists():
         print("Loading predictions")
         df = pd.read_json(PREDICTIONS)
 
     else:
-        print("Loading features")
+        print("No predictions found. Loading features")
+
         df = pd.read_json(FEATURES)
 
         df["likeProbability"] = None
         df["predictedLike"] = None
 
 
+    #
+    # Normalize IDs
+    #
+
     df["id"] = df["id"].astype(str)
 
-    df["listingId"] = df["id"]
 
+    #
+    # Restore user likes
+    #
 
     likes = load_likes()
 
@@ -47,7 +60,41 @@ def load_dataframe():
         .fillna("")
     )
 
+
+    #
+    # Current Airbnb marker
+    #
+
+    df["is_current"] = False
+
+    if current_airbnb:
+
+        df["is_current"] = (
+            df["id"]
+            .astype(str)
+            ==
+            str(current_airbnb)
+        )
+
+
+    #
+    # Prediction formatting
+    #
+
+    if "predictedLike" in df:
+
+        df["predictedLike"] = (
+            df["predictedLike"]
+            .map({
+                True: "YES",
+                False: ""
+            })
+            .fillna("")
+        )
+
+
     if "likeProbability" in df:
+
         df["likeProbability"] = (
             pd.to_numeric(
                 df["likeProbability"],
@@ -57,26 +104,24 @@ def load_dataframe():
         )
 
 
-    if "predictedLike" in df:
-        df["predictedLike"] = (
-            df["predictedLike"]
-            .map({
-                True: "YES",
-                False: "",
-            })
-            .fillna("")
+    #
+    # Derived values
+    #
+
+    df["core_value"] = (
+        df["rating"]
+        /
+        df["perNight"]
     )
 
-    df["id"] = df.apply(
-        lambda r: f"[{r['listingId']}]({r['url']})",
-        axis=1,
-    )
 
-    columns = [
+    #
+    # Ensure columns exist
+    #
+
+    required = [
         "listingId",
         "url",
-        "like",
-        "id",
         "description",
         "rating",
         "reviews",
@@ -90,16 +135,13 @@ def load_dataframe():
     ]
 
 
-    for col in columns:
-        if col not in df:
+    df["listingId"] = df["id"]
+
+
+    for col in required:
+
+        if col not in df.columns:
             df[col] = None
 
-
-    df = df[columns]
-
-    df["core_value"] = (
-        df["rating"] /
-        df["perNight"]
-    )
 
     return df
