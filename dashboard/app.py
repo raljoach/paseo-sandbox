@@ -119,10 +119,13 @@ app.layout = html.Div([
             {"name": "Rating", "id": "rating"},
             {"name": "Reviews", "id": "reviews"},
             {"name": "$/night", "id": "perNight"},
-            {"name": "Bedrooms", "id": "bedrooms"},
-            {"name": "Bathrooms", "id": "bathrooms"},
+            {"name": "Rooms", "id": "bedrooms"},
+            {"name": "Baths", "id": "bathrooms"},
             {"name": "Bucket", "id": "ratingBucket"},
-            {"name": "Score", "id": "valueScore"},
+            {"name": "Score", "id": "valueScore","type": "numeric",
+                "format": {
+                    "specifier": ".3f"
+                },},
         ],
         hidden_columns=["listingId", "url"],
         css=[{
@@ -138,7 +141,62 @@ app.layout = html.Div([
                 ]
             }
         },
-
+        fixed_rows={"headers": True},
+        style_cell_conditional=[
+            {
+                "if": {"column_id": "like"},
+                "width": "55px",
+                "minWidth": "55px",
+                "maxWidth": "55px",
+            },
+            {
+                "if": {"column_id": "rating"},
+                "width": "70px",
+                "minWidth": "70px",
+                "maxWidth": "70px",
+            },
+            {
+                "if": {"column_id": "reviews"},
+                "width": "80px",
+                "minWidth": "80px",
+                "maxWidth": "80px",
+            },
+            {
+                "if": {"column_id": "bedrooms"},
+                "width": "80px",
+                "minWidth": "80px",
+                "maxWidth": "80px",
+            },
+            {
+                "if": {"column_id": "bathrooms"},
+                "width": "80px",
+                "minWidth": "80px",
+                "maxWidth": "80px",
+            },
+            {
+                "if": {"column_id": "predictedLike"},
+                "width": "95px",
+                "minWidth": "95px",
+                "maxWidth": "95px",
+            },
+            {
+                "if": {"column_id": "likeProbability"},
+                "width": "100px",
+                "minWidth": "100px",
+                "maxWidth": "100px",
+            },
+            {
+                "if": {"column_id": "description"},
+                "width": "540px",
+                "minWidth": "540px",
+                "maxWidth": "540px",
+            },
+        ],
+        # style_table={
+        #     "height": "700px",      # or whatever height you want
+        #     "overflowY": "auto",
+        #     "overflowX": "auto",
+        # },
         editable=True,
 
         markdown_options={

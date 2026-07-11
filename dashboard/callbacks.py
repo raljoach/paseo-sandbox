@@ -8,6 +8,7 @@ from model.predictor import generate_predictions
 from model.evaluate import evaluate
 from dashboard.data import load_dataframe
 from model.likes import load_likes
+from dashboard.filters import apply_filters
 
 BASE = Path(__file__).parent.parent
 
@@ -130,6 +131,30 @@ def register_callbacks(app):
             f"Saved {len(likes)} labels. "
             f"Generated {len(predictions)} predictions."
         )
+    
+    @app.callback(
+        Output("airbnb-table", "data"),
+        Input("rating-filter", "value"),
+        Input("current-airbnb", "value"),
+    )
+    def update_table(
+        rating_filter,
+        current_airbnb,
+    ):
+
+        df = load_dataframe()
+
+        df = apply_filters(
+            df,
+            rating_filter,
+            current_airbnb
+        )
+
+        df = (
+            df.sort_values("core_value", ascending=False)
+            .reset_index(drop=True)
+        )
+        return df.to_dict("records")
 
     #
     # GRAPH FILTERS
@@ -167,43 +192,53 @@ def register_callbacks(app):
                 == str(current_airbnb)
             )
 
-        if rating_filter != "ALL":
 
-            if rating_filter == "5":
-                df = df[df.rating == 5]
 
-            elif rating_filter == "4.9":
-                df = df[
-                    (df.rating >= 4.9) &
-                    (df.rating < 5)
-                ]
-
-            elif rating_filter == "4.8":
-                df = df[
-                    (df.rating >= 4.8) &
-                    (df.rating < 4.9)
-                ]
-
-            elif rating_filter == "4.7":
-                df = df[
-                    (df.rating >= 4.7) &
-                    (df.rating < 4.8)
-                ]
-
-        # print(
-        #     df[
-        #         [
-        #             "listingId",
-        #             "like",
-        #             "predictedLike",
-        #             "likeProbability"
-        #         ]
-        #     ].head(20)
-        # )
-        return create_value_graph(
+        df = apply_filters(
             df,
-            metric
+            rating_filter,
+            current_airbnb
         )
+
+        return create_value_graph(df, metric)
+
+        # if rating_filter != "ALL":
+
+        #     if rating_filter == "5":
+        #         df = df[df.rating == 5]
+
+        #     elif rating_filter == "4.9":
+        #         df = df[
+        #             (df.rating >= 4.9) &
+        #             (df.rating < 5)
+        #         ]
+
+        #     elif rating_filter == "4.8":
+        #         df = df[
+        #             (df.rating >= 4.8) &
+        #             (df.rating < 4.9)
+        #         ]
+
+        #     elif rating_filter == "4.7":
+        #         df = df[
+        #             (df.rating >= 4.7) &
+        #             (df.rating < 4.8)
+        #         ]
+
+        # # print(
+        # #     df[
+        # #         [
+        # #             "listingId",
+        # #             "like",
+        # #             "predictedLike",
+        # #             "likeProbability"
+        # #         ]
+        # #     ].head(20)
+        # # )
+        # return create_value_graph(
+        #     df,
+        #     metric
+        # )
     
     @app.callback(
         Output(
