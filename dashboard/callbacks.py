@@ -5,7 +5,9 @@ from dash import Input, Output, State, html
 from dashboard.figures import create_value_graph
 from model.trainer import train
 from model.predictor import generate_predictions
+from model.evaluate import evaluate
 from dashboard.data import load_dataframe
+from model.likes import load_likes
 
 BASE = Path(__file__).parent.parent
 
@@ -91,8 +93,32 @@ def register_callbacks(app):
         # Train model
         #
 
-        model, predictions = train()
+        model = train()
 
+        if model is None:
+            return (
+                f"Saved {len(likes)} labels. "
+                "Need at least one YES and one NO before predictions can be generated."
+            )
+
+        evaluate(model)
+
+        features = pd.read_json(FEATURES)
+
+        # remove UI-only columns
+
+        features = features.drop(
+            columns=[
+                "idLink"
+            ],
+            errors="ignore"
+        )
+
+        features["id"] = features["id"].astype(str)
+        predictions = generate_predictions(
+            model,
+            features
+        )
 
         predictions.to_json(
             PREDICTIONS,
@@ -100,13 +126,10 @@ def register_callbacks(app):
             indent=2
         )
 
-
         return (
             f"Saved {len(likes)} labels. "
             f"Generated {len(predictions)} predictions."
         )
-
-
 
     #
     # GRAPH FILTERS
@@ -167,7 +190,16 @@ def register_callbacks(app):
                     (df.rating < 4.8)
                 ]
 
-
+        # print(
+        #     df[
+        #         [
+        #             "listingId",
+        #             "like",
+        #             "predictedLike",
+        #             "likeProbability"
+        #         ]
+        #     ].head(20)
+        # )
         return create_value_graph(
             df,
             metric

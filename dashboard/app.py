@@ -21,7 +21,6 @@ df = load_dataframe()
 
 
 df = df.drop(columns=["debug"], errors="ignore")
-
 app.layout = html.Div([
     html.H2("Paseo"),
     html.H3("Graph Controls"),
@@ -113,7 +112,7 @@ app.layout = html.Div([
             },
             {
                 "name": "ID",
-                "id": "id",
+                "id": "idLink",
                 "presentation": "markdown",
             },
             {"name": "Description", "id": "description"},
@@ -149,7 +148,7 @@ app.layout = html.Div([
         sort_action="native",
         filter_action="native",
         # filter_query="",
-        page_size=20,
+        page_size=100,
     )
 ])
 

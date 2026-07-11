@@ -2,15 +2,10 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from pathlib import Path
 from model.likes import load_likes
-
-FEATURES = [
-    "rating",
-    "valueScore",
-    "perNight",
-    "bedrooms",
-    "bathrooms",
-    "reviews",
-]
+from model.preprocessing import (
+    FEATURES,
+    prepare_features,
+)
 
 DATA = (
     Path(__file__).parent.parent
@@ -19,26 +14,19 @@ DATA = (
     / "airbnb_medellin_features.json"
 )
 
+MIN_LABELS = 20
+MIN_PER_CLASS = 5
+
 
 def train():
 
     listings = pd.read_json(DATA)
-
+    listings = prepare_features(listings)
     listings["id"] = (
         listings["id"]
         .astype(str)
     )
-
-    listings["bedrooms"] = (
-        listings["bedrooms"]
-        .fillna(0)
-    )
-
-    listings["bathrooms"] = (
-        listings["bathrooms"]
-        .fillna(0)
-    )
-
+    
     likes = pd.DataFrame(
         load_likes().items(),
         columns=[
@@ -47,11 +35,40 @@ def train():
         ]
     )
 
+
+
+    yes_count = (
+        likes["like"] == "YES"
+    ).sum()
+
+    no_count = (
+        likes["like"] == "NO"
+    ).sum()
+
+
+    if len(likes) < MIN_LABELS:
+        print("Not enough labels: ",len(likes))
+        return None
+
+
+    if yes_count < MIN_PER_CLASS or no_count < MIN_PER_CLASS:
+        print("Need more YES and NO examples: ", yes_count, no_count)
+        return None
+
     df = listings.merge(
         likes,
         on="id",
         how="inner",
     )
+
+    if df.empty:
+        return None
+    
+    if len(df) == 0:
+        return None
+
+    if df["like"].nunique() < 2:
+        return None
 
     X = df[FEATURES]
 
@@ -59,8 +76,16 @@ def train():
         df["like"] == "YES"
     ).astype(int)
 
-    model = LogisticRegression()
+    model = LogisticRegression(
+        class_weight="balanced",
+        max_iter=1000
+    )
+    print("Training labels:")
+    print(y.value_counts())
 
+    print()
+    print("Feature ranges:")
+    print(X.describe())
     model.fit(
         X,
         y

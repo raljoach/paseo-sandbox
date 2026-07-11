@@ -46,7 +46,16 @@ def load_dataframe(current_airbnb=None):
     #
 
     df["id"] = df["id"].astype(str)
+    df["listingId"] = df["id"].astype(str)
+    #
+    # UI hyperlink column
+    #
 
+    df["idLink"] = df.apply(
+        lambda r:
+            f'[{r["listingId"]}]({r["url"]})',
+        axis=1
+    )
 
     #
     # Restore user likes
@@ -85,13 +94,16 @@ def load_dataframe(current_airbnb=None):
 
         df["predictedLike"] = (
             df["predictedLike"]
-            .map({
-                True: "YES",
-                False: ""
+            .astype(str)
+            .str.upper()
+            .replace({
+                "TRUE": "YES",
+                "FALSE": "NO",
+                "1": "YES",
+                "0": "NO",
+                "NAN": ""
             })
-            .fillna("")
         )
-
 
     if "likeProbability" in df:
 
@@ -133,9 +145,6 @@ def load_dataframe(current_airbnb=None):
         "predictedLike",
         "likeProbability",
     ]
-
-
-    df["listingId"] = df["id"]
 
 
     for col in required:

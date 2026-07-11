@@ -10,26 +10,44 @@ def create_value_graph(df, metric):
 
     df["color"] = "Other"
 
-    # Explicit likes
+
+    # User decisions first
     df.loc[
         df["like"] == "YES",
         "color"
-    ] = "Liked"
+    ] = "User YES"
 
-    # AI predictions (only unlabeled listings)
+
     df.loc[
-        (df["predictedLike"] == "YES") &
-        (df["like"] == ""),
+        df["like"] == "NO",
         "color"
-    ] = "Predicted"
+    ] = "User NO"
 
-    # Current Airbnb overrides everything
+
+    # AI predictions only if user has not labeled it
+    df.loc[
+        (df["like"] == "") &
+        (df["predictedLike"] == "YES"),
+        "color"
+    ] = "Predicted YES"
+
+
+    df.loc[
+        (df["like"] == "") &
+        (df["predictedLike"] == "NO"),
+        "color"
+    ] = "Predicted NO"
+
+
+    # Current overrides everything
     if "is_current" in df.columns:
         df.loc[
             df["is_current"],
             "color"
         ] = "Current Airbnb"
 
+    print(df["color"].value_counts())
+    print(df[["like", "predictedLike", "color"]].value_counts())
     fig = px.scatter(
         df,
         x=df.index,
@@ -41,13 +59,16 @@ def create_value_graph(df, metric):
             "perNight",
             "rating",
             "url",
+            "likeProbability"
         ],
-        color_discrete_map={
-            "Current Airbnb": "#ff0000",   # red
-            "Liked": "#00cc44",            # green
-            "Predicted": "#ff00ff",        # fuchsia
-            "Other": "#0066ff",            # blue
-        },
+       color_discrete_map={
+            "Current Airbnb": "#ff0000",   # Bright Red
+            "User YES": "#00cc44",         # Green
+            "User NO": "#8B4513",          # SaddleBrown
+            "Predicted YES": "#ff00ff",    # Fuchsia
+            "Predicted NO": "#ff8c00",     # Dark Orange
+            "Other": "#0066ff",            # Blue
+        }
     )
 
 
@@ -57,7 +78,8 @@ def create_value_graph(df, metric):
         "ID: %{customdata[0]}<br>"
         "Rating: %{customdata[3]}<br>"
         "Price: $%{customdata[2]}/night<br>"
-        "Value: %{y:.3f}"
+        "Value: %{y:.3f}<br>"
+        "Prediction: %{customdata[5]:.3f}<br>"
         "<extra></extra>"
     )
 
