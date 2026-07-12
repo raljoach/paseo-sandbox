@@ -65,26 +65,22 @@ def register_callbacks(app):
         prevent_initial_call=True
     )
 
+
     def save_likes(n_clicks, rows):
 
-        likes = []
+        existing = load_likes()
 
         for row in rows:
 
             if row["like"]:
 
-                likes.append(
-                    {
-                        "id": str(row["listingId"]),
-                        "like": row["like"]
-                    }
-                )
+                existing[str(row["listingId"])] = row["like"]
 
 
         with open(LIKES, "w") as f:
 
             json.dump(
-                likes,
+                existing,
                 f,
                 indent=2
             )

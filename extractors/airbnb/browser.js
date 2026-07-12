@@ -5,19 +5,55 @@ const { stringify } = require("csv-stringify/sync");
 const { score } = require("./scorer");
 const { summarize } = require("../../analysis/stats");
 const { addFeatures } = require("../../analysis/features");
+const { createSearchUrl } = require("./searchUrl");
+
 
 async function run() {
+    const [
+        destination,
+        checkin,
+        checkout,
+        flex
+    ] = process.argv.slice(2);
+
+
+    if (!destination || !checkin || !checkout) {
+
+        console.error(
+            "Usage: node browser.js <destination> <checkin> <checkout> <flex>"
+        );
+
+        process.exit(1);
+
+    }
+
+    console.log({
+        destination,
+        checkin,
+        checkout,
+        flex
+    });
 
     const browser = await chromium.launch({
-        headless: false
+        headless: true
     });
 
     const page = await browser.newPage();
     // page.on("console", msg => {
     //     console.log("BROWSER:", msg.text());
     // });
+    const flexDays = Number(flex || 0);
+
+    const searchUrl = createSearchUrl({
+        destination,
+        checkin,
+        checkout,
+        flex: flexDays,
+    });
+
+    console.log('SEARCH URL: ', searchUrl);
     await page.goto(
-        "https://www.airbnb.com/s/Medellin--Colombia/homes//?locale=en&country_override=US&currency=USD",
+        searchUrl,
         {
             waitUntil: "domcontentloaded",
             timeout: 120000
@@ -42,7 +78,7 @@ async function run() {
 
     // await page.waitForTimeout(10000);
 
-    const rows = await page.evaluate(async (code) => {
+    let rows = await page.evaluate(async (code) => {
 
         // execute extractor.js INSIDE Chrome
         eval(code);
@@ -52,6 +88,21 @@ async function run() {
 
     }, extractorCode);
     await browser.close();
+
+    const uniqueRows = Array.from(
+        new Map(
+            rows.map(row => [
+                row.id,
+                row
+            ])
+        ).values()
+    );
+
+    console.log(
+        `Removed ${rows.length - uniqueRows.length} duplicate listings`
+    );
+
+    rows = uniqueRows
 
     const rawJsonPath = path.join(
         __dirname,
@@ -135,19 +186,16 @@ async function run() {
 
 
     console.table(
-
-        dashboardRows.slice(0,10).map(x => ({
-            description: x.description,
-            perNight: x.perNight,
+        dashboardRows.slice(0,10).map((x, i) => ({
+            rank: i + 1,
+            description: x.description.substring(0, 35),
+            price: `$${x.perNight}`,
             rating: x.rating,
             reviews: x.reviews,
-            bedrooms: x.bedrooms,
-            bathrooms: x.bathrooms,
-            // valueScore: x.valueScore.toFixed(4),
-            score : x.valueScore.toFixed(4)
-            // url: link(x.url, "OPEN")
+            beds: x.bedrooms,
+            baths: x.bathrooms,
+            score: x.valueScore.toFixed(4)
         }))
-
     );
 
     dashboardRows.slice(0,10).forEach((x, i) => {

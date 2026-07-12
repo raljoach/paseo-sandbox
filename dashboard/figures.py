@@ -1,5 +1,5 @@
 import plotly.express as px
-
+import pandas as pd
 
 def create_value_graph(df, metric):
 
@@ -8,8 +8,11 @@ def create_value_graph(df, metric):
         ascending=True
     ).reset_index(drop=True)
 
-    df["color"] = "Other"
+    df["predictionDisplay"] = df["likeProbability"].apply(
+        lambda x: f"Prediction: {x:.3f}<br>" if pd.notnull(x) else ""
+    )
 
+    df["color"] = "Other"
 
     # User decisions first
     df.loc[
@@ -59,7 +62,7 @@ def create_value_graph(df, metric):
             "perNight",
             "rating",
             "url",
-            "likeProbability"
+            "predictionDisplay"     
         ],
        color_discrete_map={
             "Current Airbnb": "#ff0000",   # Bright Red
@@ -79,7 +82,7 @@ def create_value_graph(df, metric):
         "Rating: %{customdata[3]}<br>"
         "Price: $%{customdata[2]}/night<br>"
         "Value: %{y:.3f}<br>"
-        "Prediction: %{customdata[5]:.3f}<br>"
+        "%{customdata[5]}"
         "<extra></extra>"
     )
 

@@ -29,16 +29,22 @@ def load_dataframe(current_airbnb=None):
     #
 
     if PREDICTIONS.exists():
-        print("Loading predictions")
-        df = pd.read_json(PREDICTIONS)
+
+        prediction_time = PREDICTIONS.stat().st_mtime
+        feature_time = FEATURES.stat().st_mtime
+
+        if prediction_time >= feature_time:
+            print("Loading predictions")
+            df = pd.read_json(PREDICTIONS)
+
+        else:
+            print("Loading newest features")
+            df = pd.read_json(FEATURES)
 
     else:
-        print("No predictions found. Loading features")
 
+        print("Loading features")
         df = pd.read_json(FEATURES)
-
-        df["likeProbability"] = None
-        df["predictedLike"] = None
 
 
     #
