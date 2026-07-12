@@ -5,38 +5,10 @@ from dash import Input, Output, State, html
 from dashboard.figures import create_value_graph
 from model.trainer import train
 from model.predictor import generate_predictions
-from model.evaluate import evaluate
 from dashboard.data import load_dataframe
 from model.likes import load_likes
 from dashboard.filters import apply_filters
-
-BASE = Path(__file__).parent.parent
-
-
-LIKES = (
-    BASE
-    / "data"
-    / "processed"
-    / "airbnb_likes.json"
-)
-
-
-PREDICTIONS = (
-    BASE
-    / "data"
-    / "processed"
-    / "airbnb_predictions.json"
-)
-
-
-FEATURES = (
-    BASE
-    / "data"
-    / "processed"
-    / "airbnb_medellin_features.json"
-)
-
-
+from model.paths import (FEATURES, PREDICTIONS, LIKES)
 
 def register_callbacks(app):
 
@@ -69,12 +41,15 @@ def register_callbacks(app):
     def save_likes(n_clicks, rows):
 
         existing = load_likes()
-
+        updated_count = 0
         for row in rows:
-
             if row["like"]:
+                if row["like"] in ("YES","NO"):
+                    previous = existing.get(str(row["listingId"]))
+                    if previous != row["like"]:
+                        updated_count += 1
 
-                existing[str(row["listingId"])] = row["like"]
+                    existing[str(row["listingId"])] = row["like"]
 
 
         with open(LIKES, "w") as f:
@@ -90,31 +65,29 @@ def register_callbacks(app):
         # Train model
         #
 
-        model = train()
+        success = train()
 
-        if model is None:
+        if not success:
             return (
-                f"Saved {len(likes)} labels. "
-                "Need at least one YES and one NO before predictions can be generated."
+                f"Saved {updated_count} label updates. "
+                "Need more YES/NO labels before predictions can be generated."
             )
-
-        evaluate(model)
 
         features = pd.read_json(FEATURES)
 
         # remove UI-only columns
 
-        features = features.drop(
-            columns=[
-                "idLink"
-            ],
-            errors="ignore"
+        
+        predictions = generate_predictions(
+            features
         )
 
-        features["id"] = features["id"].astype(str)
-        predictions = generate_predictions(
-            model,
-            features
+        likes = load_likes()
+
+        predictions["like"] = (
+            predictions["id"]
+            .map(likes)
+            .fillna("")
         )
 
         predictions.to_json(
@@ -124,7 +97,7 @@ def register_callbacks(app):
         )
 
         return (
-            f"Saved {len(likes)} labels. "
+            f"Saved {updated_count} label updates. "
             f"Generated {len(predictions)} predictions."
         )
     

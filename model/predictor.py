@@ -1,5 +1,7 @@
 import pandas as pd
 from pathlib import Path
+from joblib import load
+from model.paths import MODEL_FILE
 from model.preprocessing import (
     FEATURES,
     prepare_features,
@@ -22,7 +24,21 @@ def classify_probability(p):
 
     return ""
 
-def generate_predictions(model, listings):
+
+
+def load_model():
+    return load(MODEL_FILE)
+
+def generate_predictions(listings):
+    listings = listings.drop(
+            columns=[
+                "idLink"
+            ],
+            errors="ignore"
+        )
+
+    listings["id"] = listings["id"].astype(str)
+    model = load_model()
     predictions = listings.copy()
 
     features_df = prepare_features(listings)

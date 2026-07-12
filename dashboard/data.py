@@ -1,25 +1,7 @@
 import pandas as pd
 from pathlib import Path
-
 from model.likes import load_likes
-
-
-BASE = Path(__file__).parent.parent
-
-
-PREDICTIONS = (
-    BASE
-    / "data"
-    / "processed"
-    / "airbnb_predictions.json"
-)
-
-FEATURES = (
-    BASE
-    / "data"
-    / "processed"
-    / "airbnb_medellin_features.json"
-)
+from model.paths import (FEATURES, PREDICTIONS)
 
 
 def load_dataframe(current_airbnb=None):

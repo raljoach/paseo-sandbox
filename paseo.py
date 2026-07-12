@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 import webbrowser
 import time
-
+from model.paths import model_exists
 
 def run_dashboard():
 
@@ -15,9 +15,7 @@ def run_dashboard():
             sys.executable,
             "-m",
             "dashboard.app"
-        ],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
+        ]
     )
 
     time.sleep(3)
@@ -30,15 +28,29 @@ def run_dashboard():
 
 def run_scraper(args):
     root = Path(__file__).resolve().parent
+
+    cmd = [
+        "node",
+        "extractors/airbnb/browser.js",
+        args.destination,
+    ]
+
+    if args.checkin:
+        cmd.append(args.checkin)
+
+    if args.checkout:
+        cmd.append(args.checkout)
+
+    if args.flex:
+        cmd.append(str(args.flex))
+
+    if args.from_file:
+        cmd.append("--from-file")
+
+    print(cmd)
+
     subprocess.run(
-        [
-            "node",
-            "extractors/airbnb/browser.js",
-            args.destination,
-            args.checkin,
-            args.checkout,
-            str(args.flex),
-        ],
+        cmd,
         cwd=root,
         check=True,
     )
@@ -48,11 +60,11 @@ def run_predictions():
         [
             sys.executable,
             "-m",
-            "model.predictor"
+            "model.run_predictions"
         ],
         check=True
     )
-    
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -62,13 +74,16 @@ def main():
     )
 
     parser.add_argument(
-        "--checkin",
-        required=True,
+        "--checkin"
     )
 
     parser.add_argument(
-        "--checkout",
-        required=True,
+        "--checkout"
+    )
+
+    parser.add_argument(
+        "--from-file",
+        action="store_true"
     )
 
     parser.add_argument(
@@ -93,7 +108,10 @@ def main():
 
     print("Running Airbnb scraper...")
     run_scraper(args)
-    run_predictions()
+    if model_exists():
+        run_predictions()
+    else:
+        print("No trained model found.")
     print("Starting dashboard...")
     run_dashboard()
 

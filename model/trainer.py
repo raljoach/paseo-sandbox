@@ -2,6 +2,10 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from pathlib import Path
 from model.likes import load_likes
+from joblib import dump
+from model.paths import MODEL_FILE
+from model.evaluate import evaluate
+
 from model.preprocessing import (
     FEATURES,
     prepare_features,
@@ -47,12 +51,12 @@ def train():
 
 
     if len(likes) < MIN_LABELS:
-        print("Not enough labels: ",len(likes))
+        print("Not enough labels: ",len(likes), ' minimum: ', MIN_LABELS)
         return None
 
 
     if yes_count < MIN_PER_CLASS or no_count < MIN_PER_CLASS:
-        print("Need more YES and NO examples: ", yes_count, no_count)
+        print("Need more YES and NO examples: ", yes_count, no_count, ' min per class: ', MIN_PER_CLASS)
         return None
 
     df = listings.merge(
@@ -90,5 +94,6 @@ def train():
         X,
         y
     )
-
+    evaluate(model)
+    dump(model, MODEL_FILE)
     return model

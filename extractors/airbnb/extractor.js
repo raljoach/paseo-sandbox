@@ -1878,6 +1878,19 @@ function output(rows){
   a1.href = url1;
   a1.download = filename;
   a1.click();
+
+  const filename2 = `airbnb_listings_${Date.now()}.json`;
+
+//   fs.writeFileSync(filename2, JSON.stringify(data, null, 2), 'utf-8');
+    const json = JSON.stringify(rows, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename2;
+    a.click();
+  console.log('✅ JSON written:', filename);
 }
 async function doStuff(){
   //-------------------Phase 0---------
@@ -2150,6 +2163,7 @@ async function doStuff(){
 //     const rows = await extract();
 
 //     console.log(rows);
+//     output(rows)
 
 // })();
 
