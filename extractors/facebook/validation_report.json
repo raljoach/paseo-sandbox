@@ -1,0 +1,1428 @@
+[
+  {
+    "index": 0,
+    "issue": "Missing title",
+    "row": {
+      "id": "1032042836197860",
+      "url": "https://www.facebook.com/marketplace/item/1032042836197860/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2236671886422457121%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A36671886422457121%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A0%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.0005722196646745%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2236671886422457121%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP360,000,000\n3 habitaciones 2 baños Casa\nEnvigado",
+      "monthlyRent": 360000000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Casa",
+      "city": "Envigado",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 1,
+    "issue": "Missing title",
+    "row": {
+      "id": "1341309347325314",
+      "url": "https://www.facebook.com/marketplace/item/1341309347325314/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2236837663492498771%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A36837663492498771%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A1%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.0004904982595174%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2236837663492498771%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP2,500,000\n3 habitaciones 4 baños Casa\nBarbosa, Antioquia",
+      "monthlyRent": 2500000,
+      "bedrooms": 3,
+      "bathrooms": 4,
+      "propertyType": "Casa",
+      "city": "Barbosa, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 3,
+    "issue": "Missing title",
+    "row": {
+      "id": "27577747341865500",
+      "url": "https://www.facebook.com/marketplace/item/27577747341865500/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2227794546146900501%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27794546146900501%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A4%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00017276189992108%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227794546146900501%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP3,500,000\n3 habitaciones 3 baños Casa\nSan Pedro de los Milagros",
+      "monthlyRent": 3500000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "propertyType": "Casa",
+      "city": "San Pedro de los Milagros",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 4,
+    "issue": "Missing title",
+    "row": {
+      "id": "1346705910669996",
+      "url": "https://www.facebook.com/marketplace/item/1346705910669996/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2227511417055212309%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27511417055212309%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A5%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00017276089992108%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227511417055212309%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP700,000,000\n4 habitaciones 2 baños Casa\nMedellín, Antioquia",
+      "monthlyRent": 700000000,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "propertyType": "Casa",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 7,
+    "issue": "Missing title",
+    "row": {
+      "id": "965115136492722",
+      "url": "https://www.facebook.com/marketplace/item/965115136492722/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2228004271189158513%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A28004271189158513%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A11%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00017275489992108%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2228004271189158513%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP330,000,000\n3 habitaciones 2 baños Casa\nMedellín, Antioquia",
+      "monthlyRent": 330000000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Casa",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 8,
+    "issue": "Missing title",
+    "row": {
+      "id": "1013555748314248",
+      "url": "https://www.facebook.com/marketplace/item/1013555748314248/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2227377592005235951%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27377592005235951%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A14%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00017275189992108%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227377592005235951%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP3,600,000\n6 habitaciones 4 baños Casa\nMedellín, Antioquia",
+      "monthlyRent": 3600000,
+      "bedrooms": 6,
+      "bathrooms": 4,
+      "propertyType": "Casa",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 9,
+    "issue": "Missing title",
+    "row": {
+      "id": "1065789394591711",
+      "url": "https://www.facebook.com/marketplace/item/1065789394591711/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%227737126992986101%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A7737126992986101%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A16%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00016324496607933%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%227737126992986101%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP750,000,000\n12 habitaciones 5 baños Casa\nCocorná",
+      "monthlyRent": 750000000,
+      "bedrooms": 12,
+      "bathrooms": 5,
+      "propertyType": "Casa",
+      "city": "Cocorná",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 11,
+    "issue": "Missing title",
+    "row": {
+      "id": "2097243814395849",
+      "url": "https://www.facebook.com/marketplace/item/2097243814395849/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2226184853611200773%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A26184853611200773%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A21%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00014710732445582%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2226184853611200773%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP153,500,000\n3 habitaciones 3 baños Casa\nBello, Antioquia",
+      "monthlyRent": 153500000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "propertyType": "Casa",
+      "city": "Bello, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 15,
+    "issue": "Missing title",
+    "row": {
+      "id": "1535491961449823",
+      "url": "https://www.facebook.com/marketplace/item/1535491961449823/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135090504016088%22%2C%22mf_story_key%22%3A%2227328907293417741%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27328907293417741%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A-1%2C%5C%22ranking_signature%5C%22%3A0%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A-0.43264491974477%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227328907293417741%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP2,750,000\n3 habitaciones 2 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 2750000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 18,
+    "issue": "Missing title",
+    "row": {
+      "id": "1554651472660250",
+      "url": "https://www.facebook.com/marketplace/item/1554651472660250/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2227378890165128742%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27378890165128742%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A34%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A0.00010483578476164%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227378890165128742%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP530,000,000\n5 habitaciones 3 baños Departamento/condominio",
+      "monthlyRent": 530000000,
+      "bedrooms": 5,
+      "bathrooms": 3,
+      "propertyType": "Departamento",
+      "city": "5 habitaciones 3 baños Departamento/condominio",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 20,
+    "issue": "Missing title",
+    "row": {
+      "id": "888123544338389",
+      "url": "https://www.facebook.com/marketplace/item/888123544338389/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139763479773838%22%2C%22mf_story_key%22%3A%2227491764343806287%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27491764343806287%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A39%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A9.8630864266958e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227491764343806287%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP900,000\n3 habitaciones 1 baño Casa\nMarinilla",
+      "monthlyRent": 900000,
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "propertyType": "Casa",
+      "city": "Marinilla",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 24,
+    "issue": "Missing title",
+    "row": {
+      "id": "2401711230252744",
+      "url": "https://www.facebook.com/marketplace/item/2401711230252744/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139557241581122%22%2C%22mf_story_key%22%3A%2226436750892607792%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A26436750892607792%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A51%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A8.4657490931541e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2226436750892607792%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP285,000,000\n4 habitaciones 2 baños Casa\nAmagá",
+      "monthlyRent": 285000000,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "propertyType": "Casa",
+      "city": "Amagá",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 32,
+    "issue": "Missing title",
+    "row": {
+      "id": "1531000761816820",
+      "url": "https://www.facebook.com/marketplace/item/1531000761816820/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139557241581122%22%2C%22mf_story_key%22%3A%2226822458730765639%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A26822458730765639%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A71%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A7.0157598662177e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2226822458730765639%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,500,000\n2 habitaciones 2 baños Townhouse\nBello, Antioquia",
+      "monthlyRent": 1500000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "propertyType": "House",
+      "city": "Bello, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 33,
+    "issue": "Missing title",
+    "row": {
+      "id": "1513498906925937",
+      "url": "https://www.facebook.com/marketplace/item/1513498906925937/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534139557241581122%22%2C%22mf_story_key%22%3A%2227674207078931749%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27674207078931749%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A72%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A6.7941386590091e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227674207078931749%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP280,000,000\n3 habitaciones 2 baños Casa\nBello, Antioquia",
+      "monthlyRent": 280000000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Casa",
+      "city": "Bello, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 43,
+    "issue": "Missing title",
+    "row": {
+      "id": "1893753341207246",
+      "url": "https://www.facebook.com/marketplace/item/1893753341207246/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136946009580111%22%2C%22mf_story_key%22%3A%2231112658578378026%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A31112658578378026%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A94%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A4.9825608719585e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2231112658578378026%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP650,000,000\n6 habitaciones 4 baños Departamento/condominio\nBetulia, Antioquia",
+      "monthlyRent": 650000000,
+      "bedrooms": 6,
+      "bathrooms": 4,
+      "propertyType": "Departamento",
+      "city": "Betulia, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 44,
+    "issue": "Missing title",
+    "row": {
+      "id": "1518926115537931",
+      "url": "https://www.facebook.com/marketplace/item/1518926115537931/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136877219930807%22%2C%22mf_story_key%22%3A%226781521808583456%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A6781521808583456%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A96%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A4.8462177202914e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%226781521808583456%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,390,000,000\n4 habitaciones 4 baños Casa\nVenecia, Antioquia",
+      "monthlyRent": 1390000000,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "propertyType": "Casa",
+      "city": "Venecia, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 55,
+    "issue": "Missing title",
+    "row": {
+      "id": "1263453702367884",
+      "url": "https://www.facebook.com/marketplace/item/1263453702367884/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136808450209003%22%2C%22mf_story_key%22%3A%2228142754505309258%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A28142754505309258%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A117%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A3.7834667524539e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2228142754505309258%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP800,000,000\n4 habitaciones 3 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 800000000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 56,
+    "issue": "Missing title",
+    "row": {
+      "id": "3126829194175513",
+      "url": "https://www.facebook.com/marketplace/item/3126829194175513/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136808450209003%22%2C%22mf_story_key%22%3A%2227825411090389721%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27825411090389721%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A123%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A3.4293936960407e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227825411090389721%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP650,000,000\n4 habitaciones 4 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 650000000,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 71,
+    "issue": "Missing title",
+    "row": {
+      "id": "2190790711699733",
+      "url": "https://www.facebook.com/marketplace/item/2190790711699733/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136671091339654%22%2C%22mf_story_key%22%3A%2227975059548849122%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27975059548849122%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A150%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A2.8162161427256e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227975059548849122%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP6,500,000\n3 Beds 4 Baths - House\nRionegro, Antioquia",
+      "monthlyRent": 6500000,
+      "bedrooms": 3,
+      "bathrooms": 4,
+      "propertyType": "House",
+      "city": "Rionegro, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 77,
+    "issue": "Missing title",
+    "row": {
+      "id": "4530699457162099",
+      "url": "https://www.facebook.com/marketplace/item/4530699457162099/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136602370308323%22%2C%22mf_story_key%22%3A%2227370608049268203%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27370608049268203%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A160%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A2.6712394905834e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227370608049268203%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,290,000,000\n3 habitaciones 4 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 1290000000,
+      "bedrooms": 3,
+      "bathrooms": 4,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 78,
+    "issue": "Missing title",
+    "row": {
+      "id": "2743583032689243",
+      "url": "https://www.facebook.com/marketplace/item/2743583032689243/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136602370308323%22%2C%22mf_story_key%22%3A%2236745416325101974%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A36745416325101974%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A162%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A2.6369948333016e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2236745416325101974%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP930,000,000\n3 habitaciones 3 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 930000000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 86,
+    "issue": "Missing title",
+    "row": {
+      "id": "1938236143395875",
+      "url": "https://www.facebook.com/marketplace/item/1938236143395875/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136533607559897%22%2C%22mf_story_key%22%3A%2227370959342564389%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27370959342564389%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A181%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A2.3384280611935e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227370959342564389%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP580,000,000\n2 habitaciones 2 baños Departamento/condominio\nCaldas, Antioquia",
+      "monthlyRent": 580000000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Caldas, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 114,
+    "issue": "Missing title",
+    "row": {
+      "id": "879324364493558",
+      "url": "https://www.facebook.com/marketplace/item/879324364493558/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534136258612081125%22%2C%22mf_story_key%22%3A%2225933603949580375%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A25933603949580375%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A257%2C%5C%22ranking_signature%5C%22%3A9068794374266256308%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A7043590468400579199%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A1.6239524494334e-5%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2225933603949580375%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP150,000,000\n1 habitación 1 baño Casa",
+      "monthlyRent": 150000000,
+      "bedrooms": null,
+      "bathrooms": 1,
+      "propertyType": "Casa",
+      "city": "1 habitación 1 baño Casa",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 149,
+    "issue": "Missing title",
+    "row": {
+      "id": "1435603835261429",
+      "url": "https://www.facebook.com/marketplace/item/1435603835261429/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135915213533335%22%2C%22mf_story_key%22%3A%2227775693682022131%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27775693682022131%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A358%2C%5C%22ranking_signature%5C%22%3A1346528563876616973%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A986935821417698858%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A1.6090505631885e-6%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227775693682022131%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP5,300,000\n3 habitaciones 2 baños Departamento/condominio\nEnvigado",
+      "monthlyRent": 5300000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Envigado",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 150,
+    "issue": "Missing title",
+    "row": {
+      "id": "1333617001685794",
+      "url": "https://www.facebook.com/marketplace/item/1333617001685794/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135915213533335%22%2C%22mf_story_key%22%3A%2226703311866009466%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A26703311866009466%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A360%2C%5C%22ranking_signature%5C%22%3A1346528563876616973%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A986935821417698858%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A1.4662761235901e-6%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2226703311866009466%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP2,450,000\n3 habitaciones 2 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 2450000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 151,
+    "issue": "Missing title",
+    "row": {
+      "id": "2440898416424745",
+      "url": "https://www.facebook.com/marketplace/item/2440898416424745/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135915213533335%22%2C%22mf_story_key%22%3A%2227996399436634895%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27996399436634895%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A370%2C%5C%22ranking_signature%5C%22%3A1346528563876616973%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A986935821417698858%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A6.0981259554534e-7%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227996399436634895%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP3,000,000\n2 habitaciones 2 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 3000000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 153,
+    "issue": "Missing title",
+    "row": {
+      "id": "900052596175496",
+      "url": "https://www.facebook.com/marketplace/item/900052596175496/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135915213533335%22%2C%22mf_story_key%22%3A%2226286579274272282%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A26286579274272282%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A375%2C%5C%22ranking_signature%5C%22%3A1346528563876616973%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A986935821417698858%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A5.0649050717062e-7%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2226286579274272282%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP715,000,000\n3 habitaciones 2 baños Departamento/condominio\nMedellín, Antioquia",
+      "monthlyRent": 715000000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 164,
+    "issue": "Missing title",
+    "row": {
+      "id": "1501053481249082",
+      "url": "https://www.facebook.com/marketplace/item/1501053481249082/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135640304680830%22%2C%22mf_story_key%22%3A%2227361896260157253%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27361896260157253%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A394%2C%5C%22ranking_signature%5C%22%3A9032306836819289755%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A2238820673812365879%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A2.1975466699816e-7%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227361896260157253%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,500,000\n3 habitaciones 2 baños Departamento/condominio\nLa Ceja",
+      "monthlyRent": 1500000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "La Ceja",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 173,
+    "issue": "Missing title",
+    "row": {
+      "id": "1505743674326279",
+      "url": "https://www.facebook.com/marketplace/item/1505743674326279/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135640304680830%22%2C%22mf_story_key%22%3A%2236221985687446739%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A36221985687446739%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A413%2C%5C%22ranking_signature%5C%22%3A9032306836819289755%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A2238820673812365879%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A1.1482727365454e-7%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2236221985687446739%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP159,000,000\n3 habitaciones 1 baño Apartamento o piso\nMedellín, Antioquia",
+      "monthlyRent": 159000000,
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "propertyType": "Apartamento",
+      "city": "Medellín, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 178,
+    "issue": "Missing title",
+    "row": {
+      "id": "27229212843415974",
+      "url": "https://www.facebook.com/marketplace/item/27229212843415974/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135502762174671%22%2C%22mf_story_key%22%3A%2227084997757849123%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27084997757849123%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A425%2C%5C%22ranking_signature%5C%22%3A9032306836819289755%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A2238820673812365879%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A8.0170929477803e-8%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227084997757849123%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP2,250,000\n2 habitaciones 1 baño Casa",
+      "monthlyRent": 2250000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "propertyType": "Casa",
+      "city": "2 habitaciones 1 baño Casa",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 182,
+    "issue": "Missing title",
+    "row": {
+      "id": "1500793161473756",
+      "url": "https://www.facebook.com/marketplace/item/1500793161473756/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135502762174671%22%2C%22mf_story_key%22%3A%2225750932687866415%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A25750932687866415%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A432%2C%5C%22ranking_signature%5C%22%3A9032306836819289755%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A2238820673812365879%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A5.2830062431193e-8%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2225750932687866415%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP276,000,000\n2 habitaciones 2 baños Departamento/condominio",
+      "monthlyRent": 276000000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "2 habitaciones 2 baños Departamento/condominio",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 193,
+    "issue": "Missing title",
+    "row": {
+      "id": "1911920796174985",
+      "url": "https://www.facebook.com/marketplace/item/1911920796174985/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135434042739904%22%2C%22mf_story_key%22%3A%2227584482234508989%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27584482234508989%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A462%2C%5C%22ranking_signature%5C%22%3A9032306836819289755%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A2238820673812365879%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A1.1481669838354e-8%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227584482234508989%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,600,000\n3 habitaciones 2 baños Departamento/condominio\nLa Ceja",
+      "monthlyRent": 1600000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "La Ceja",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 205,
+    "issue": "Missing title",
+    "row": {
+      "id": "962603666833724",
+      "url": "https://www.facebook.com/marketplace/item/962603666833724/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135090504016088%22%2C%22mf_story_key%22%3A%2226346168371726947%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A26346168371726947%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A491%2C%5C%22ranking_signature%5C%22%3A3729313997460616959%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A5644482496210032074%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A7.6511381489446e-11%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2226346168371726947%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,880,000\n3 habitaciones 2 baños Departamento/condominio\nBello, Antioquia",
+      "monthlyRent": 1880000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Bello, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 207,
+    "issue": "Missing title",
+    "row": {
+      "id": "1051783924268616",
+      "url": "https://www.facebook.com/marketplace/item/1051783924268616/?ref=category_feed&referral_code=undefined&referral_story_type=listing&tracking=%7B%22qid%22%3A%22-6534135090504016088%22%2C%22mf_story_key%22%3A%2227689963753975037%22%2C%22commerce_rank_obj%22%3A%22%7B%5C%22target_id%5C%22%3A27689963753975037%2C%5C%22target_type%5C%22%3A0%2C%5C%22primary_position%5C%22%3A495%2C%5C%22ranking_signature%5C%22%3A3729313997460616959%2C%5C%22ranking_region%5C%22%3A%5C%22hil%5C%22%2C%5C%22ranking_request_id%5C%22%3A5644482496210032074%2C%5C%22commerce_channel%5C%22%3A504%2C%5C%22value%5C%22%3A2.6359004164527e-11%2C%5C%22candidate_retrieval_source_map%5C%22%3A%7B%5C%2227689963753975037%5C%22%3A204%7D%2C%5C%22is_prefetch%5C%22%3Afalse%7D%22%7D&__tn__=!%3AD",
+      "rawText": "COP1,800,000\n3 habitaciones 2 baños Departamento/condominio\nBello, Antioquia",
+      "monthlyRent": 1800000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "propertyType": "Departamento",
+      "city": "Bello, Antioquia",
+      "isFurnished": false,
+      "hasParking": false,
+      "allowsPets": false,
+      "hasBalcony": false,
+      "hasElevator": false,
+      "propertySize": null,
+      "title": null
+    }
+  },
+  {
+    "index": 0,
+    "issue": "Possible sale listing instead of rent",
+    "price": 360000000,
+    "title": null
+  },
+  {
+    "index": 4,
+    "issue": "Possible sale listing instead of rent",
+    "price": 700000000,
+    "title": null
+  },
+  {
+    "index": 7,
+    "issue": "Possible sale listing instead of rent",
+    "price": 330000000,
+    "title": null
+  },
+  {
+    "index": 9,
+    "issue": "Possible sale listing instead of rent",
+    "price": 750000000,
+    "title": null
+  },
+  {
+    "index": 10,
+    "issue": "Possible sale listing instead of rent",
+    "price": 990000000,
+    "title": "🏡Venta de casa en Sabaneta la doctora 168 mts"
+  },
+  {
+    "index": 11,
+    "issue": "Possible sale listing instead of rent",
+    "price": 153500000,
+    "title": null
+  },
+  {
+    "index": 18,
+    "issue": "Possible sale listing instead of rent",
+    "price": 530000000,
+    "title": null
+  },
+  {
+    "index": 24,
+    "issue": "Possible sale listing instead of rent",
+    "price": 285000000,
+    "title": null
+  },
+  {
+    "index": 29,
+    "issue": "Possible sale listing instead of rent",
+    "price": 50000000,
+    "title": "Casa de lujo en Llanogrande para venta y renta"
+  },
+  {
+    "index": 30,
+    "issue": "Possible sale listing instead of rent",
+    "price": 11000000,
+    "title": "HERMOSA CASA EN ARRIENDO UNIDAD COMPLETA, EL RETIRO ANTIOQUIA"
+  },
+  {
+    "index": 31,
+    "issue": "Suspiciously cheap price",
+    "price": 123,
+    "title": "Cabaña campestre"
+  },
+  {
+    "index": 33,
+    "issue": "Possible sale listing instead of rent",
+    "price": 280000000,
+    "title": null
+  },
+  {
+    "index": 34,
+    "issue": "Suspiciously cheap price",
+    "price": 123,
+    "title": "Alquiler - Casa campestre a 5 minutos del aeropuerto JMC 🏡"
+  },
+  {
+    "index": 35,
+    "issue": "Possible sale listing instead of rent",
+    "price": 300000000,
+    "title": "Venta de Apartamento en Calasanz medellin"
+  },
+  {
+    "index": 36,
+    "issue": "Possible sale listing instead of rent",
+    "price": 850000000,
+    "title": "Vendo casa en sopetran Antioquia"
+  },
+  {
+    "index": 42,
+    "issue": "Possible sale listing instead of rent",
+    "price": 144500000,
+    "title": "Vende apartamento en Copacabana"
+  },
+  {
+    "index": 43,
+    "issue": "Possible sale listing instead of rent",
+    "price": 650000000,
+    "title": null
+  },
+  {
+    "index": 44,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1390000000,
+    "title": null
+  },
+  {
+    "index": 46,
+    "issue": "Possible sale listing instead of rent",
+    "price": 260000000,
+    "title": "Inversion aparta estudio. La. Castellana"
+  },
+  {
+    "index": 49,
+    "issue": "Possible sale listing instead of rent",
+    "price": 235000000,
+    "title": "VENDO PARTAMENTO EN BELLO SECTOR SAN GABRIEL(A168)"
+  },
+  {
+    "index": 52,
+    "issue": "Possible sale listing instead of rent",
+    "price": 440000000,
+    "title": "Casa finca - Rionegro"
+  },
+  {
+    "index": 55,
+    "issue": "Possible sale listing instead of rent",
+    "price": 800000000,
+    "title": null
+  },
+  {
+    "index": 56,
+    "issue": "Possible sale listing instead of rent",
+    "price": 650000000,
+    "title": null
+  },
+  {
+    "index": 57,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1700000000,
+    "title": "16 ) LAURELES CASA/LOTE VENTA"
+  },
+  {
+    "index": 58,
+    "issue": "Possible sale listing instead of rent",
+    "price": 310000000,
+    "title": "Vendo Casa de 4 Aptos en Enciso - inversionistas que desean Renta Inmediata"
+  },
+  {
+    "index": 61,
+    "issue": "Possible sale listing instead of rent",
+    "price": 60000000,
+    "title": "Se vende negocio , estudio WC"
+  },
+  {
+    "index": 67,
+    "issue": "Possible sale listing instead of rent",
+    "price": 280000000,
+    "title": "Hermoso Aptastudio Remodelado en Boston a la VENTA o se arrienda."
+  },
+  {
+    "index": 70,
+    "issue": "Possible sale listing instead of rent",
+    "price": 12000000,
+    "title": "Alquilo finca para Hogar de adulto mayor,para hotel, en Barbosa. #antioquia #antioquia #colombia #t"
+  },
+  {
+    "index": 74,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1250000000,
+    "title": "VENTA DE SUITE PARA RENTAS CORTAS EN OLIVE COUNTRY LIVING"
+  },
+  {
+    "index": 75,
+    "issue": "Possible sale listing instead of rent",
+    "price": 499000000,
+    "title": "Acogedor apartamento independiente Laureles, Las Acacias 🌳🏡"
+  },
+  {
+    "index": 76,
+    "issue": "Suspiciously cheap price",
+    "price": 123,
+    "title": "Lote 😊"
+  },
+  {
+    "index": 77,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1290000000,
+    "title": null
+  },
+  {
+    "index": 78,
+    "issue": "Possible sale listing instead of rent",
+    "price": 930000000,
+    "title": null
+  },
+  {
+    "index": 80,
+    "issue": "Possible sale listing instead of rent",
+    "price": 239000000,
+    "title": "🔥 APARTAESTUDIO NUEVO PARA ESTRENAR EN SABANETA | INVERSIÓN INTELIGENTE | $239 MILLONES 🔥"
+  },
+  {
+    "index": 86,
+    "issue": "Possible sale listing instead of rent",
+    "price": 580000000,
+    "title": null
+  },
+  {
+    "index": 87,
+    "issue": "Possible sale listing instead of rent",
+    "price": 240000000,
+    "title": "Tu inversion esta aquí aparta estudio barrio Simón Bolívar"
+  },
+  {
+    "index": 88,
+    "issue": "Possible sale listing instead of rent",
+    "price": 650000000,
+    "title": "LAURELES APARTAMENTO AIRBNB AMOBLADO 54 MTS"
+  },
+  {
+    "index": 90,
+    "issue": "Possible sale listing instead of rent",
+    "price": 840000000,
+    "title": "VENTA DE APTO ENVIGADO ESCOBERO"
+  },
+  {
+    "index": 91,
+    "issue": "Possible sale listing instead of rent",
+    "price": 65000000,
+    "title": "Apartamento en aranjuez ganga"
+  },
+  {
+    "index": 93,
+    "issue": "Possible sale listing instead of rent",
+    "price": 389000000,
+    "title": "VENTA APARTASUITE ESTRENAR RENTAS CORTAS. lAURELES, MEDELLIN"
+  },
+  {
+    "index": 94,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1200000000,
+    "title": "Se vende/ arrienda local en envigado"
+  },
+  {
+    "index": 96,
+    "issue": "Possible sale listing instead of rent",
+    "price": 285000000,
+    "title": "Vendo Apartaestudio en los Colores de 30 M2 con parqueadero en Unidad Cerrada por $[hidden information]"
+  },
+  {
+    "index": 100,
+    "issue": "Possible sale listing instead of rent",
+    "price": 515000000,
+    "title": "APTO CENTRO DE NEGOCIOS. 3/33 arbnb"
+  },
+  {
+    "index": 102,
+    "issue": "Suspiciously cheap price",
+    "price": 600,
+    "title": "Se alquila casa a orilla de la carretera en la vía antigua de fredonia 3243414194"
+  },
+  {
+    "index": 104,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1390000000,
+    "title": "SE VENDE ESPECTACULAR FINCA EN SOPETRAN"
+  },
+  {
+    "index": 105,
+    "issue": "Possible sale listing instead of rent",
+    "price": 380000000,
+    "title": "🏡 INVERSIÓN INTELIGENTE EN SABANETA"
+  },
+  {
+    "index": 111,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1450000000,
+    "title": "Apartamento en venta | Laureles | 170m² | 3 alcobas | $1.450M"
+  },
+  {
+    "index": 112,
+    "issue": "Possible sale listing instead of rent",
+    "price": 2000000000,
+    "title": "✨Venta de apto en milla de oro 112 mts, ideales para renta corta Airbnb"
+  },
+  {
+    "index": 114,
+    "issue": "Possible sale listing instead of rent",
+    "price": 150000000,
+    "title": null
+  },
+  {
+    "index": 115,
+    "issue": "Suspiciously cheap price",
+    "price": 600,
+    "title": "Arrinedo apt estudio pequeño con servicios gas natural independiente barrio pedregal serca de sena"
+  },
+  {
+    "index": 116,
+    "issue": "Possible sale listing instead of rent",
+    "price": 295000000,
+    "title": "APARTAESTUDIO TIPO LOFT | LAURELES BOLIVARIANA EN VENTA M2158"
+  },
+  {
+    "index": 120,
+    "issue": "Possible sale listing instead of rent",
+    "price": 120000000,
+    "title": "Vendo aparta estudio en Bello barrio El Rosario."
+  },
+  {
+    "index": 122,
+    "issue": "Suspiciously cheap price",
+    "price": 100,
+    "title": "Un día tan especial merece un escenario perfecto. Fechas disponibles"
+  },
+  {
+    "index": 123,
+    "issue": "Possible sale listing instead of rent",
+    "price": 55000000,
+    "title": "SE VENDE FERRETERIA"
+  },
+  {
+    "index": 125,
+    "issue": "Possible sale listing instead of rent",
+    "price": 78000000,
+    "title": "Se Vende Apartaestudio Con Aire"
+  },
+  {
+    "index": 126,
+    "issue": "Possible sale listing instead of rent",
+    "price": 390000000,
+    "title": "Apartaestudio en venta para rentas cortas (Airbnb) , Conquistadores, Medellin"
+  },
+  {
+    "index": 127,
+    "issue": "Possible sale listing instead of rent",
+    "price": 700000000,
+    "title": "🏙️ ¡Apartamento amoblado en venta en Linares, Medellín! | Inversión rentable desde el primer día 💰"
+  },
+  {
+    "index": 130,
+    "issue": "Possible sale listing instead of rent",
+    "price": 130000000,
+    "title": "🚨 La oficina más barata para estrenar en un edificio empresarial de Medellín cuesta solo $130 millo"
+  },
+  {
+    "index": 132,
+    "issue": "Suspiciously cheap price",
+    "price": 52,
+    "title": "Apto"
+  },
+  {
+    "index": 133,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1880000000,
+    "title": "SABANETA PENT-HOUSE DE LUJO ZONA PLANA EXCELENTE VISTA UNICO."
+  },
+  {
+    "index": 139,
+    "issue": "Suspiciously cheap price",
+    "price": 1200,
+    "title": "ALQUILER DE FINCA"
+  },
+  {
+    "index": 142,
+    "issue": "Suspiciously cheap price",
+    "price": 1100,
+    "title": "PROMO Finca disponible para el Puente de Agosto☀️🌴(Dueño directo)"
+  },
+  {
+    "index": 152,
+    "issue": "Suspiciously cheap price",
+    "price": 45000,
+    "title": "Se alquila hermosa casa campestre por cuartos o la casa total por días o mes capacidad 20 personas"
+  },
+  {
+    "index": 153,
+    "issue": "Possible sale listing instead of rent",
+    "price": 715000000,
+    "title": null
+  },
+  {
+    "index": 158,
+    "issue": "Possible sale listing instead of rent",
+    "price": 13500000,
+    "title": "ARRIENDO CASA EN LA LOMA DE LOS BENEDICTINOS"
+  },
+  {
+    "index": 162,
+    "issue": "Possible sale listing instead of rent",
+    "price": 300000000,
+    "title": "VENDO CASA UNIFAMILIAR 3.PISOS EN B. CAICEDO"
+  },
+  {
+    "index": 166,
+    "issue": "Possible sale listing instead of rent",
+    "price": 14000000,
+    "title": "Casa en arriendo las Palmas"
+  },
+  {
+    "index": 168,
+    "issue": "Suspiciously cheap price",
+    "price": 50000,
+    "title": "🌴 Se alquila hermosa finca en Sopetrán, Antioquia"
+  },
+  {
+    "index": 173,
+    "issue": "Possible sale listing instead of rent",
+    "price": 159000000,
+    "title": null
+  },
+  {
+    "index": 174,
+    "issue": "Possible sale listing instead of rent",
+    "price": 420000000,
+    "title": "Vendo primer piso Cabañas con parqueadero en el ante jardín"
+  },
+  {
+    "index": 175,
+    "issue": "Possible sale listing instead of rent",
+    "price": 18000000,
+    "title": "ITAGUI BODEGAS BARATAS ALQUILO/ARRIENDO 3 BODEGAS ITAGUI 600M 800M 1500M"
+  },
+  {
+    "index": 176,
+    "issue": "Possible sale listing instead of rent",
+    "price": 2147483647,
+    "title": "Se Vende Hotel en la avenida la Playa Medellín"
+  },
+  {
+    "index": 182,
+    "issue": "Possible sale listing instead of rent",
+    "price": 276000000,
+    "title": null
+  },
+  {
+    "index": 183,
+    "issue": "Possible sale listing instead of rent",
+    "price": 1150000000,
+    "title": "Se vende penthouse duplex conquistadores"
+  },
+  {
+    "index": 186,
+    "issue": "Possible sale listing instead of rent",
+    "price": 38000000,
+    "title": "Bodega en arriendo ríonegro"
+  },
+  {
+    "index": 199,
+    "issue": "Suspiciously cheap price",
+    "price": 1200,
+    "title": "Se renta hermoso apartamento en robledo la pola"
+  },
+  {
+    "index": 1,
+    "issue": "Unknown city",
+    "city": "Barbosa, Antioquia",
+    "title": null
+  },
+  {
+    "index": 3,
+    "issue": "Unknown city",
+    "city": "San Pedro de los Milagros",
+    "title": null
+  },
+  {
+    "index": 9,
+    "issue": "Unknown city",
+    "city": "Cocorná",
+    "title": null
+  },
+  {
+    "index": 14,
+    "issue": "Unknown city",
+    "city": "Copacabana, Antioquia",
+    "title": "🏡ALQUILER DE CASA FINCA‼️"
+  },
+  {
+    "index": 17,
+    "issue": "Unknown city",
+    "city": "La Estrella, Antioquia",
+    "title": "Casa en arriendo de 2 pisos con garaje en unidad cerrada con parqueadero en Suramérica direct"
+  },
+  {
+    "index": 18,
+    "issue": "Unknown city",
+    "city": "5 habitaciones 3 baños Departamento/condominio",
+    "title": null
+  },
+  {
+    "index": 23,
+    "issue": "Unknown city",
+    "city": "La Ceja",
+    "title": "Monoambiente 1 baño Townhouse"
+  },
+  {
+    "index": 24,
+    "issue": "Unknown city",
+    "city": "Amagá",
+    "title": null
+  },
+  {
+    "index": 42,
+    "issue": "Unknown city",
+    "city": "Copacabana, Antioquia",
+    "title": "Vende apartamento en Copacabana"
+  },
+  {
+    "index": 43,
+    "issue": "Unknown city",
+    "city": "Betulia, Antioquia",
+    "title": null
+  },
+  {
+    "index": 44,
+    "issue": "Unknown city",
+    "city": "Venecia, Antioquia",
+    "title": null
+  },
+  {
+    "index": 47,
+    "issue": "Unknown city",
+    "city": "El Carmen de Viboral",
+    "title": "Alquilo hermosa finca en el oriente Antioqueño"
+  },
+  {
+    "index": 50,
+    "issue": "Unknown city",
+    "city": "Retiro, Antioquia, Colombia",
+    "title": "Alquilo casa en El Retiro"
+  },
+  {
+    "index": 53,
+    "issue": "Unknown city",
+    "city": "Piedra El Peñol, Antioquia, Colombia",
+    "title": "Finca en alquiler por temporada larga de 6 meses a un año."
+  },
+  {
+    "index": 60,
+    "issue": "Unknown city",
+    "city": "Carmen Viboral, Antioquia, Colombia",
+    "title": "Arriendo casa 🏡 Finca Unifamiliar 📍"
+  },
+  {
+    "index": 63,
+    "issue": "Unknown city",
+    "city": "La Ceja",
+    "title": "T0818. Alquilo finca en parcelación a solo 1,5 km de la zona urbana de La Ceja, Antioquia"
+  },
+  {
+    "index": 69,
+    "issue": "Unknown city",
+    "city": "Copacabana, Antioquia",
+    "title": "Barbosa arrendó finca buenas.comodidadescasa2niveles.pesebreras.picina.son20000metros.7.500.000.Xmez"
+  },
+  {
+    "index": 72,
+    "issue": "Unknown city",
+    "city": "La Estrella, Antioquia",
+    "title": "Lote Comercial o Industrial Campestre en Arriendo 1.000 m2 | La Estrella | 5MxMes (leer descripción)"
+  },
+  {
+    "index": 79,
+    "issue": "Unknown city",
+    "city": "Támesis, Antioquia",
+    "title": "Se alquila casa en el sur oeste Antioqueño Tamesis San Pablo"
+  },
+  {
+    "index": 86,
+    "issue": "Unknown city",
+    "city": "Caldas, Antioquia",
+    "title": null
+  },
+  {
+    "index": 102,
+    "issue": "Unknown city",
+    "city": "Fredonia, Antioquia",
+    "title": "Se alquila casa a orilla de la carretera en la vía antigua de fredonia 3243414194"
+  },
+  {
+    "index": 107,
+    "issue": "Unknown city",
+    "city": "Copacabana, Antioquia",
+    "title": "ALQUILER DE FINCA VEREDA EL NORAL COPACABANA Wassp [hidden information]"
+  },
+  {
+    "index": 110,
+    "issue": "Unknown city",
+    "city": "San Vicente, Antioquia",
+    "title": "Apartamento Chaparral - Las partidas - Via Sanvice Ferrer!!!"
+  },
+  {
+    "index": 113,
+    "issue": "Unknown city",
+    "city": "Sonsón",
+    "title": "🚀 Se ALQUILA bodega o local comercial versátil: espacio único de 80 m2 en Sonsón (Antioquia)"
+  },
+  {
+    "index": 114,
+    "issue": "Unknown city",
+    "city": "1 habitación 1 baño Casa",
+    "title": null
+  },
+  {
+    "index": 129,
+    "issue": "Unknown city",
+    "city": "Copacabana, Antioquia",
+    "title": "se alquila finca"
+  },
+  {
+    "index": 134,
+    "issue": "Unknown city",
+    "city": "Barbosa, Antioquia",
+    "title": "Arriendo cabaña los fines de semana, entrada desde el viernes hasta el domingo"
+  },
+  {
+    "index": 143,
+    "issue": "Unknown city",
+    "city": "San Jerónimo, Antioquia",
+    "title": "Finca San Jeronimo"
+  },
+  {
+    "index": 152,
+    "issue": "Unknown city",
+    "city": "San Rafael, Antioquia",
+    "title": "Se alquila hermosa casa campestre por cuartos o la casa total por días o mes capacidad 20 personas"
+  },
+  {
+    "index": 164,
+    "issue": "Unknown city",
+    "city": "La Ceja",
+    "title": null
+  },
+  {
+    "index": 165,
+    "issue": "Unknown city",
+    "city": "Cocorná",
+    "title": "Se alquila cabaña para 6 o 8 personasen cocornaparqueadero cubierto, a 2 minutos de hermosas charcos"
+  },
+  {
+    "index": 178,
+    "issue": "Unknown city",
+    "city": "2 habitaciones 1 baño Casa",
+    "title": null
+  },
+  {
+    "index": 182,
+    "issue": "Unknown city",
+    "city": "2 habitaciones 2 baños Departamento/condominio",
+    "title": null
+  },
+  {
+    "index": 193,
+    "issue": "Unknown city",
+    "city": "La Ceja",
+    "title": null
+  },
+  {
+    "index": 200,
+    "issue": "Unknown city",
+    "city": "Barbosa, Antioquia",
+    "title": "Se arrienda espectacular finca en Barbosa"
+  },
+  {
+    "index": 211,
+    "issue": "Unknown city",
+    "city": "Antioquia, Antioquia",
+    "title": "Alquiler Cabaña en Santa Fe de Antioquia"
+  },
+  {
+    "index": 65,
+    "issue": "Duplicate title",
+    "title": "Free"
+  },
+  {
+    "index": 99,
+    "issue": "Duplicate title",
+    "title": "Free"
+  },
+  {
+    "index": 140,
+    "issue": "Duplicate title",
+    "title": "Alquiler de finca"
+  },
+  {
+    "index": 141,
+    "issue": "Duplicate title",
+    "title": "Free"
+  },
+  {
+    "index": 171,
+    "issue": "Duplicate title",
+    "title": "Free"
+  },
+  {
+    "index": 180,
+    "issue": "Duplicate title",
+    "title": "Free"
+  },
+  {
+    "index": 188,
+    "issue": "Duplicate title",
+    "title": "Free"
+  },
+  {
+    "index": 209,
+    "issue": "Duplicate title",
+    "title": "Free"
+  }
+]
