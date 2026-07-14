@@ -24,4 +24,6 @@ data/
 *.log
 
 # Generated Facebook scraper output
+# Facebook scraper output
 extractors/facebook/*.json
+extractors/facebook/*.csv
