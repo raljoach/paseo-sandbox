@@ -464,16 +464,25 @@ function clean(rows){
     console.log('done clean rows')
     //return rows;
 }
-// chrome runner
-(async () => {
 
+async function extract() {
     const rows = await extractAllCards();
+    return rows;
+}
 
-    console.log(
-        "Extracted listings:",
-        rows.length
-    );
+module.exports = {
+    extract
+};
+// chrome runner
+// (async () => {
 
-    output(rows);
-    clean(rows)
-})();
+//     const rows = await extractAllCards();
+
+//     console.log(
+//         "Extracted listings:",
+//         rows.length
+//     );
+
+//     output(rows);
+//     clean(rows)
+// })();
