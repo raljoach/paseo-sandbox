@@ -285,12 +285,8 @@ async function extractAllCards() {
     }
     return [...listings.values()];
 }
-function output(rows){
 
-    /* ---------------- JSON ---------------- */
-
-    const jsonFilename = `facebook_listings_${Date.now()}.json`;
-
+function downloadJsonFile(jsonFilename, rows){
     const json = JSON.stringify(rows, null, 2);
 
     const jsonBlob = new Blob(
@@ -309,93 +305,164 @@ function output(rows){
     document.body.removeChild(jsonLink);
 
     console.log("✅ JSON downloaded:", jsonFilename);
+}
+
+function downloadCsvFile(csvFilename, rows){
+    const headers = Object.keys(rows[0]);
+
+    const csvRows = rows.map(obj =>
+        headers.map(h => {
+
+            const val = obj[h] ?? "";
+
+            return `"${String(val)
+                .replace(/"/g, '""')}"`;
+
+        }).join(",")
+    );
 
 
+    const csv = [
+        headers.join(","),
+        ...csvRows
+    ].join("\n");
+
+
+    const csvBlob = new Blob(
+        [csv],
+        { type:"text/csv" }
+    );
+
+    const csvUrl = URL.createObjectURL(csvBlob);
+
+    const csvLink = document.createElement("a");
+
+    csvLink.href = csvUrl;
+    csvLink.download = csvFilename;
+
+    document.body.appendChild(csvLink);
+    csvLink.click();
+    document.body.removeChild(csvLink);
+
+
+    console.log("✅ CSV downloaded:", csvFilename);
+}
+
+function output(rows){
+    /* ---------------- JSON ---------------- */
+    const jsonFilename = `facebook_listings_${Date.now()}.json`;
+    downloadJsonFile(jsonFilename, rows);
     /* ---------------- CSV ---------------- */
 
     setTimeout(() => {
-
         const csvFilename = `facebook_listings_${Date.now()}.csv`;
-
-        const headers = Object.keys(rows[0]);
-
-        const csvRows = rows.map(obj =>
-            headers.map(h => {
-
-                const val = obj[h] ?? "";
-
-                return `"${String(val)
-                    .replace(/"/g, '""')}"`;
-
-            }).join(",")
-        );
-
-
-        const csv = [
-            headers.join(","),
-            ...csvRows
-        ].join("\n");
-
-
-        const csvBlob = new Blob(
-            [csv],
-            { type:"text/csv" }
-        );
-
-        const csvUrl = URL.createObjectURL(csvBlob);
-
-        const csvLink = document.createElement("a");
-
-        csvLink.href = csvUrl;
-        csvLink.download = csvFilename;
-
-        document.body.appendChild(csvLink);
-        csvLink.click();
-        document.body.removeChild(csvLink);
-
-
-        console.log("✅ CSV downloaded:", csvFilename);
-
-
+        downloadCsvFile(csvFilename, rows);
     }, 1000);
     return jsonFilename
 }
-function clean(file){
-    let rows = JSON.parse(
-        fs.readFileSync(file)
+function removeDuplicates(rows){
+
+    const seen = new Map();
+
+    for(const row of rows){
+
+        if(!seen.has(row.id))
+            seen.set(row.id, row);
+
+    }
+
+    return [...seen.values()];
+}
+function removeMissingPrice(rows){
+
+    return rows.filter(r => r.monthlyRent != null);
+
+}
+function removeMissingTitle(rows){
+
+    return rows.filter(r => r.title);
+
+}
+function removeSales(rows){
+
+    return rows.filter(r =>
+
+        r.monthlyRent < 30000000
+
     );
 
-    rows = removeDuplicates(rows);
+}
+function normalizeTitle(title){
 
-    rows = removeMissingPrice(rows);
+    if(!title)
+        return null;
 
-    rows = removeMissingTitle(rows);
+    return title
+        .replace(/\s+/g,' ')
+        .trim();
 
-    rows = removeSales(rows);
+}
+function normalizeCity(city){
 
-    rows.forEach(r=>{
+    if(!city)
+        return null;
 
-        r.title = normalizeTitle(r.title);
+    return city
+        .replace(/\s+/g,' ')
+        .trim();
 
-        r.city = normalizeCity(r.city);
+}
+function validate(rows){
+
+    const issues=[];
+
+    rows.forEach((r,i)=>{
+
+        if(!r.id)
+            issues.push([i,"Missing ID"]);
+
+        if(!r.monthlyRent)
+            issues.push([i,"Missing price"]);
+
+        if(!r.title)
+            issues.push([i,"Missing title"]);
+
+        if(!r.city)
+            issues.push([i,"Missing city"]);
 
     });
 
+    return issues;
+
+}
+function clean(rows){
+    console.log('going to clean rows')
+    rows = removeDuplicates(rows);
+    rows = removeMissingPrice(rows);
+    rows = removeMissingTitle(rows);
+    rows = removeSales(rows);
+
+    rows.forEach(r => {
+        r.title = normalizeTitle(r.title);
+        r.city = normalizeCity(r.city);
+    });
+
     rows.sort(
-
         (a,b)=>a.monthlyRent-b.monthlyRent
-
     );
-
-    const issues = validate(rows);
-
-    console.log(rows.length);
-    console.log(issues.length);
-
-    fs.writeFileSync(
-        "cleaned_listings.json",
-        JSON.stringify(rows,null,2)
-    );
+    console.log('rows cleaned')
+    setTimeout(() => {
+        downloadJsonFile(
+            `cleaned_facebook_listings_${Date.now()}.json`,
+            rows
+        );
+    }, 1000);
+    setTimeout(() => {
+        const csvFilename = `cleaned_facebook_listings_${Date.now()}.csv`;
+        downloadCsvFile(csvFilename, rows);
+    }, 1000);
+    console.log('done clean rows')
+    //return rows;
 }
 // chrome runner
 (async () => {
@@ -407,6 +474,6 @@ function clean(file){
         rows.length
     );
 
-    const jsonFile = output(rows);
-    clean(jsonFile)
+    output(rows);
+    clean(rows)
 })();
