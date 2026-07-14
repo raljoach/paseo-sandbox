@@ -6,9 +6,26 @@ from model.likes import load_likes
 from dashboard.figures import create_value_graph
 from dash import dcc
 from dashboard.data import load_dataframe
+import argparse
 
 app = Dash(__name__)
-df = load_dataframe()
+parser = argparse.ArgumentParser()
+
+parser.add_argument(
+    "--site",
+    default="airbnb"
+)
+
+parser.add_argument(
+    "--source",
+    default="short-term"
+)
+
+args = parser.parse_args()
+df = load_dataframe(
+    site=args.site,
+    source=args.source
+)
 
 # print("Likes loaded:", len(likes))
 # print(list(likes.items())[:5])

@@ -1,14 +1,20 @@
-// exporter.js
-
 const fs = require("fs");
 const path = require("path");
 
-function writeJson(rows, filename) {
 
-    
+function getOutputDir({site, source}) {
 
-    const file =
-        path.join(__dirname, filename);
+    return path.join(
+        __dirname,
+        "../../data/rent",
+        source,
+        site
+    );
+
+}
+
+
+function writeJson(rows, file) {
 
     fs.writeFileSync(
         file,
@@ -19,18 +25,18 @@ function writeJson(rows, filename) {
     console.log(
         `✅ JSON written: ${file}`
     );
-
 }
 
-function writeCsv(rows, filename) {
+
+function writeCsv(rows, file) {
 
     if (!rows.length)
         return;
 
+
     const headers = Object.keys(rows[0]);
 
     const csvRows = rows.map(row =>
-
         headers.map(header => {
 
             const value = row[header] ?? "";
@@ -39,21 +45,14 @@ function writeCsv(rows, filename) {
                 .replace(/"/g, '""')}"`;
 
         }).join(",")
-
     );
 
+
     const csv = [
-
         headers.join(","),
-
         ...csvRows
-
     ].join("\n");
 
-    
-
-    const file =
-        path.join(__dirname, filename);
 
     fs.writeFileSync(
         file,
@@ -61,16 +60,56 @@ function writeCsv(rows, filename) {
         "utf8"
     );
 
+
     console.log(
         `✅ CSV written: ${file}`
     );
 
 }
 
-function exportRows(rows, prefix, stage){
-    writeJson(rows,`${prefix}_${stage}.json`);
-    writeCsv(rows,`${prefix}_${stage}.csv`);
+
+function exportRows(rows, context) {
+
+    const {
+        site,
+        source,
+        stage
+    } = context;
+
+
+    const dir = getOutputDir({
+        site,
+        source
+    });
+
+
+    fs.mkdirSync(
+        dir,
+        {
+            recursive:true
+        }
+    );
+
+
+    writeJson(
+        rows,
+        path.join(
+            dir,
+            `${site}_${stage}.json`
+        )
+    );
+
+
+    writeCsv(
+        rows,
+        path.join(
+            dir,
+            `${site}_${stage}.csv`
+        )
+    );
+
 }
+
 
 module.exports = {
     exportRows,

@@ -1,33 +1,82 @@
 import pandas as pd
 from pathlib import Path
 from model.likes import load_likes
-from model.paths import (FEATURES, PREDICTIONS)
+from model.paths import (predictions_path, features_path)
 
-
-def load_dataframe(current_airbnb=None):
-
+def load_dataframe(
+    site="airbnb",
+    source="short-term",
+    current_listing=None
+):
     #
     # Load best available dataset
     #
 
-    if PREDICTIONS.exists():
+    prediction_file = predictions_path(site, source)
+    feature_file = features_path(site, source)
 
-        prediction_time = PREDICTIONS.stat().st_mtime
-        feature_time = FEATURES.stat().st_mtime
+    if prediction_file.exists():
+        prediction_time = prediction_file.stat().st_mtime
+        feature_time = feature_file.stat().st_mtime
 
         if prediction_time >= feature_time:
             print("Loading predictions")
-            df = pd.read_json(PREDICTIONS)
+            df = pd.read_json(prediction_file)
 
-        else:
+        elif feature_file.exists():
             print("Loading newest features")
-            df = pd.read_json(FEATURES)
+            df = pd.read_json(feature_file)
+
+    elif feature_file.exists():
+        print("Loading features")
+        df = pd.read_json(feature_file)
 
     else:
 
-        print("Loading features")
-        df = pd.read_json(FEATURES)
+        print(
+            "New data location not found. "
+            "Checking legacy paths..."
+        )
 
+        legacy_features = (
+            Path("data")
+            / "processed"
+            / f"{site}_medellin_features.json"
+        )
+
+        legacy_predictions = (
+            Path("data")
+            / "processed"
+            / f"{site}_predictions.json"
+        )
+
+
+        if legacy_predictions.exists():
+
+            print(
+                f"Loading legacy predictions: {legacy_predictions}"
+            )
+
+            df = pd.read_json(
+                legacy_predictions
+            )
+
+
+        elif legacy_features.exists():
+
+            print(
+                f"Loading legacy features: {legacy_features}"
+            )
+
+            df = pd.read_json(
+                legacy_features
+            )
+
+        else:
+
+            raise Exception(
+                f"No data found for {site}/{source}"
+            )
 
     #
     # Normalize IDs
@@ -64,13 +113,13 @@ def load_dataframe(current_airbnb=None):
 
     df["is_current"] = False
 
-    if current_airbnb:
+    if current_listing:
 
         df["is_current"] = (
             df["id"]
             .astype(str)
             ==
-            str(current_airbnb)
+            str(current_listing)
         )
 
 
@@ -108,32 +157,51 @@ def load_dataframe(current_airbnb=None):
     # Derived values
     #
 
-    df["core_value"] = (
-        df["rating"]
-        /
-        df["perNight"]
-    )
+    if (
+        "rating" in df.columns and
+        "perNight" in df.columns
+    ):
+        df["core_value"] = (
+            df["rating"] /
+            df["perNight"]
+        )
+    else:
+        df["core_value"] = None
 
 
     #
     # Ensure columns exist
     #
 
-    required = [
-        "listingId",
-        "url",
-        "description",
-        "rating",
-        "reviews",
-        "perNight",
-        "bedrooms",
-        "bathrooms",
-        "ratingBucket",
-        "valueScore",
-        "predictedLike",
-        "likeProbability",
-    ]
-
+    if site == "airbnb":
+        required = [
+            "listingId",
+            "url",
+            "description",
+            "rating",
+            "reviews",
+            "perNight",
+            "bedrooms",
+            "bathrooms",
+            "ratingBucket",
+            "valueScore",
+            "predictedLike",
+            "likeProbability",
+        ]
+    else:
+        required = [
+            "listingId",
+            "url",
+            "title",
+            "monthlyRent",
+            "bedrooms",
+            "bathrooms",
+            "propertyType",
+            "city",
+            "propertySize",
+            "predictedLike",
+            "likeProbability",
+        ]
 
     for col in required:
 

@@ -1,11 +1,11 @@
-def apply_filters(df, rating_filter, current_airbnb):
+def apply_filters(df, rating_filter, current_listing):
 
     df["is_current"] = False
 
-    if current_airbnb:
+    if current_listing:
         df["is_current"] = (
             df["listingId"].astype(str)
-            == str(current_airbnb)
+            == str(current_listing)
         )
 
     if rating_filter == "5":

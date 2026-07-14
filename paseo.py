@@ -5,18 +5,19 @@ import sys
 import webbrowser
 import time
 from model.paths import model_exists
+from model.run_predictions import run_predictions
 
-def run_dashboard():
-
+def run_dashboard(args):
     print("Starting dashboard...")
-
-    subprocess.Popen(
-        [
-            sys.executable,
-            "-m",
-            "dashboard.app"
-        ]
-    )
+    subprocess.Popen([
+        sys.executable,
+        "-m",
+        "dashboard.app",
+        "--site",
+        args.site,
+        "--source",
+        args.source
+    ])
 
     time.sleep(3)
 
@@ -31,46 +32,66 @@ def run_scraper(args):
 
     cmd = [
         "node",
-        "extractors/airbnb/browser.js",
-        args.destination,
+        f"extractors/{args.site}/browser.js"
     ]
+    cmd.extend([
+        "--source",
+        args.source
+    ])
 
-    if args.checkin:
-        cmd.append(args.checkin)
+    if args.site == "airbnb":
+        cmd.append(args.destination)
 
-    if args.checkout:
-        cmd.append(args.checkout)
+        if args.checkin:
+            cmd.append(args.checkin)
 
-    if args.flex:
-        cmd.append(str(args.flex))
+        if args.checkout:
+            cmd.append(args.checkout)
+
+        if args.flex:
+            cmd.append(str(args.flex))
 
     if args.from_file:
-        cmd.append("--from-file")
+        cmd.extend([
+            "-from-file",
+            args.from_file
+        ])
 
-    print(cmd)
+    subprocess.run(cmd, cwd=root, check=True)
 
-    subprocess.run(
-        cmd,
-        cwd=root,
-        check=True,
-    )
-
-def run_predictions():
-    subprocess.run(
-        [
-            sys.executable,
-            "-m",
-            "model.run_predictions"
-        ],
-        check=True
-    )
+# def run_predictions(args):
+#     subprocess.run([
+#         sys.executable,
+#         "-m",
+#         "model.run_predictions",
+#         "--site",
+#         args.site,
+#         "--source",
+#         args.source
+#     ], check=True)
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--site",
+        default="airbnb",
+        choices=[
+            "airbnb",
+            "facebook"
+        ]
+    )
 
     parser.add_argument(
-        "--destination",
-        required=True,
+        "--source",
+        default="short-term",
+        choices=[
+            "short-term",
+            "long-term"
+        ]
+    )
+
+    parser.add_argument(
+        "--destination"
     )
 
     parser.add_argument(
@@ -83,7 +104,7 @@ def main():
 
     parser.add_argument(
         "--from-file",
-        action="store_true"
+        help="Path to an existing JSON file"
     )
 
     parser.add_argument(
@@ -93,6 +114,15 @@ def main():
     )
 
     args = parser.parse_args()
+
+    if (
+        not args.from_file
+        and
+        not args.destination
+    ):
+        parser.error(
+            "--destination is required unless using --from-file"
+        )
 
     print("===================================")
     print("Paseo")
@@ -108,12 +138,17 @@ def main():
 
     print("Running Airbnb scraper...")
     run_scraper(args)
-    if model_exists():
-        run_predictions()
+    if args.site == "airbnb" and model_exists():
+        run_predictions(
+            site=args.site,
+            source=args.source
+        )
     else:
-        print("No trained model found.")
+        print(
+            f"Skipping predictions for {args.site}"
+        )
     print("Starting dashboard...")
-    run_dashboard()
+    run_dashboard(args)
 
     print("Done.")
 

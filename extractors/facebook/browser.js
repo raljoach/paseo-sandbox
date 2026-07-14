@@ -9,6 +9,14 @@ const exporter = require("./exporter");
 async function main() {
 
     const args = process.argv.slice(2);
+   
+    let source = "short-term";
+
+    const sourceIndex = args.indexOf("--source");
+
+    if(sourceIndex >= 0){
+        source = args[sourceIndex + 1];
+    }
 
     let rows;
 
@@ -37,10 +45,35 @@ async function main() {
         rows = await extractor.extract();
 
     }
-    exporter.exportRows(rows,'facebook', 'raw');
+    exporter.exportRows(
+        rows,
+        {
+            site: 'facebook',
+            source,
+            stage: "raw"
+        }
+    );
     rows = cleaner.clean(rows);
     validator.validate(rows);
-    exporter.exportRows(rows,'facebook', 'clean');
-}
+
+    exporter.exportRows(
+        rows,
+        {
+            site: 'facebook',
+            source,
+            stage: "clean"
+        }
+    );
+
+
+    exporter.exportRows(
+        rows,
+        {
+            site: 'facebook',
+            source,
+            stage: "features"
+        }
+    );
+    }
 
 main().catch(console.error);

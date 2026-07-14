@@ -8,7 +8,7 @@ from model.predictor import generate_predictions
 from dashboard.data import load_dataframe
 from model.likes import load_likes
 from dashboard.filters import apply_filters
-from model.paths import (FEATURES, PREDICTIONS, LIKES)
+from model.paths import (predictions_path, features_path, LIKES)
 
 def register_callbacks(app):
 
@@ -73,7 +73,7 @@ def register_callbacks(app):
                 "Need more YES/NO labels before predictions can be generated."
             )
 
-        features = pd.read_json(FEATURES)
+        features = pd.read_json(features_path)
 
         # remove UI-only columns
 
@@ -91,7 +91,7 @@ def register_callbacks(app):
         )
 
         predictions.to_json(
-            PREDICTIONS,
+            predictions_path,
             orient="records",
             indent=2
         )
@@ -108,7 +108,7 @@ def register_callbacks(app):
     )
     def update_table(
         rating_filter,
-        current_airbnb,
+        current_listing,
     ):
 
         df = load_dataframe()
@@ -116,7 +116,7 @@ def register_callbacks(app):
         df = apply_filters(
             df,
             rating_filter,
-            current_airbnb
+            current_listing
         )
 
         df = (
@@ -147,18 +147,18 @@ def register_callbacks(app):
     def update_graph(
         rating_filter,
         metric,
-        current_airbnb
+        current_listing
     ):
 
         df = load_dataframe()
 
         df["is_current"] = False
 
-        if current_airbnb:
+        if current_listing:
             df["is_current"] = (
                 df["listingId"]
                 .astype(str)
-                == str(current_airbnb)
+                == str(current_listing)
             )
 
 
@@ -166,7 +166,7 @@ def register_callbacks(app):
         df = apply_filters(
             df,
             rating_filter,
-            current_airbnb
+            current_listing
         )
 
         return create_value_graph(df, metric)
