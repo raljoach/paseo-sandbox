@@ -10,8 +10,7 @@ from model.likes import load_likes
 from dashboard.filters import apply_filters
 from model.paths import (predictions_path, features_path, LIKES)
 
-def register_callbacks(app):
-
+def register_callbacks(app, args):
 
     #
     # SAVE USER LIKES + TRAIN MODEL
@@ -110,8 +109,12 @@ def register_callbacks(app):
         rating_filter,
         current_listing,
     ):
-
-        df = load_dataframe()
+        print("update_table SITE =", args.site)
+        print("update_table SOURCE =", args.source)
+        df = load_dataframe(
+            site=args.site,
+            source=args.source
+        )
 
         df = apply_filters(
             df,
@@ -149,8 +152,12 @@ def register_callbacks(app):
         metric,
         current_listing
     ):
-
-        df = load_dataframe()
+        print("update_graph SITE =", args.site)
+        print("update_graph SOURCE =", args.source)
+        df = load_dataframe(
+            site=args.site,
+            source=args.source
+        )
 
         df["is_current"] = False
 

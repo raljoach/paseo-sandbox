@@ -14,21 +14,23 @@ def load_dataframe(
 
     prediction_file = predictions_path(site, source)
     feature_file = features_path(site, source)
+    print("Prediction file:", prediction_file)
+    print("Feature file:", feature_file)
 
     if prediction_file.exists():
         prediction_time = prediction_file.stat().st_mtime
         feature_time = feature_file.stat().st_mtime
 
         if prediction_time >= feature_time:
-            print("Loading predictions")
+            print("Loading predictions: ", prediction_file)
             df = pd.read_json(prediction_file)
 
         elif feature_file.exists():
-            print("Loading newest features")
+            print("Loading newest features: ", feature_file)
             df = pd.read_json(feature_file)
 
     elif feature_file.exists():
-        print("Loading features")
+        print("Loading features: ", feature_file)
         df = pd.read_json(feature_file)
 
     else:
@@ -190,17 +192,18 @@ def load_dataframe(
         ]
     else:
         required = [
-            "listingId",
-            "url",
-            "title",
             "monthlyRent",
             "bedrooms",
             "bathrooms",
             "propertyType",
             "city",
             "propertySize",
-            "predictedLike",
-            "likeProbability",
+            "title"#,
+            # "isFurnished",
+            # "hasParking",
+            # "allowsPets",
+            # "hasBalcony",
+            # "hasElevator",
         ]
 
     for col in required:
@@ -209,4 +212,43 @@ def load_dataframe(
             df[col] = None
 
 
+    print('COLUMNS LOADED: \n', df.columns.tolist())
+    print(f"Rows: {len(df)}")
+    print()
+
+    for col in [
+        "monthlyRent",
+        "bedrooms",
+        "bathrooms",
+        "propertySize",
+        "propertyType",
+        "city"#,
+        # "isFurnished",
+        # "hasParking",
+        # "allowsPets",
+        # "hasBalcony",
+        # "hasElevator",
+    ]:
+
+        empty = (
+            df[col]
+            .isna()
+            .sum()
+        )
+
+        blank = (
+            df[col]
+            .astype(str)
+            .str.strip()
+            .eq("")
+            .sum()
+        )
+
+        total_missing = empty + blank
+
+        print(
+            f"{col:15}"
+            f"{total_missing:4} missing"
+            f" ({100*total_missing/len(df):5.1f}%)"
+        )
     return df

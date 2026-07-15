@@ -22,7 +22,7 @@ FEATURES = (
 
 
 def evaluate(model):
-
+    print('Loading: ', FEATURES)
     listings = pd.read_json(FEATURES)
 
     listings["id"] = listings["id"].astype(str)

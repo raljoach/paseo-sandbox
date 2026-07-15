@@ -23,7 +23,7 @@ MIN_PER_CLASS = 5
 
 
 def train():
-
+    print('LOADING: ', DATA)
     listings = pd.read_json(DATA)
     listings = prepare_features(listings)
     listings["id"] = (

@@ -22,6 +22,8 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
+print("SITE =", args.site)
+print("SOURCE =", args.source)
 df = load_dataframe(
     site=args.site,
     source=args.source
@@ -38,78 +40,8 @@ df = load_dataframe(
 
 
 df = df.drop(columns=["debug"], errors="ignore")
-app.layout = html.Div([
-    html.H2("Paseo"),
-    html.H3("Graph Controls"),
-    dcc.Input(
-        id="current-airbnb",
-        placeholder="Current Airbnb ID"
-    ),
-    dcc.Dropdown(
 
-        id="rating-filter",
-
-        options=[
-            {
-                "label": "All Ratings",
-                "value": "ALL"
-            },
-            {
-                "label": "5.0",
-                "value": "5"
-            },
-            {
-                "label": "4.9-4.99",
-                "value": "4.9"
-            },
-            {
-                "label": "4.8-4.89",
-                "value": "4.8"
-            },
-            {
-                "label": "4.7-4.79",
-                "value": "4.7"
-            },
-        ],
-
-        value="ALL"
-    ),
-
-
-    dcc.Dropdown(
-
-        id="metric-selector",
-
-        options=[
-            {
-                "label": "Rating / Night",
-                "value": "rating"
-            },
-            {
-                "label": "Value Score",
-                "value": "core_value"
-            }
-        ],
-
-        value="core_value"
-    ),
-
-
-    dcc.Graph(
-        id="airbnb-value-graph"
-    ),
-    html.Div(id="selected-airbnb"),
-    html.Div(id="airbnb-link"),
-    html.Button(
-        "💾 Save Likes",
-        id="save-likes",
-        n_clicks=0
-    ),
-    html.Div(id="save-status"),
-    dash_table.DataTable(
-        id="airbnb-table",
-        data=df.to_dict("records"),
-        columns=[
+AIRBNB_COLUMNS = [
             {
                 "name": "Like",
                 "id": "like",
@@ -143,7 +75,106 @@ app.layout = html.Div([
                 "format": {
                     "specifier": ".3f"
                 },},
-        ],
+        ]
+
+FACEBOOK_COLUMNS = [
+    {"name":"Like","id":"like","presentation":"dropdown"},
+    {"name":"Prediction","id":"predictedLike"},
+    {"name":"Probability","id":"likeProbability"},
+    {
+        "name":"ID",
+        "id":"idLink",
+        "presentation":"markdown"
+    },
+    {"name":"Title","id":"title"},
+    {"name":"Price","id":"monthlyRent"},
+    {"name":"Beds","id":"bedrooms"},
+    {"name":"Baths","id":"bathrooms"},
+    {"name":"Size","id":"propertySize"},
+    {"name":"City","id":"city"},
+    {"name":"Type","id":"propertyType"},
+
+    # {"name":"Furnished","id":"isFurnished"},
+    # {"name":"Parking","id":"hasParking"},
+    # {"name":"Pets","id":"allowsPets"},
+    # {"name":"Balcony","id":"hasBalcony"},
+    # {"name":"Elevator","id":"hasElevator"},
+]
+
+# -------------------------
+# Controls
+# -------------------------
+
+if args.site == "airbnb":
+
+    controls = [
+
+        html.H3("Graph Controls"),
+
+        dcc.Input(
+            id="current-airbnb",
+            placeholder="Current Airbnb ID"
+        ),
+
+        dcc.Dropdown(
+            id="rating-filter",
+            options=[
+                {"label":"All Ratings","value":"ALL"},
+                {"label":"5.0","value":"5"},
+                {"label":"4.9-4.99","value":"4.9"},
+                {"label":"4.8-4.89","value":"4.8"},
+                {"label":"4.7-4.79","value":"4.7"},
+            ],
+            value="ALL"
+        ),
+
+        dcc.Dropdown(
+            id="metric-selector",
+            options=[
+                {"label":"Rating / Night","value":"rating"},
+                {"label":"Value Score","value":"core_value"},
+            ],
+            value="core_value"
+        ),
+
+        dcc.Graph(id="airbnb-value-graph")
+    ]
+
+else:
+
+    controls = [
+
+        html.H3("Facebook Filters"),
+
+        dcc.Dropdown(
+            id="price-filter",
+            options=[
+                {"label":"Any Price","value":"ALL"},
+                {"label":"< $700","value":"700"},
+                {"label":"$700-$900","value":"900"},
+                {"label":"$900-$1100","value":"1100"},
+                {"label":"> $1100","value":"999999"},
+            ],
+            value="ALL"
+        )
+
+    ]
+
+app.layout = html.Div([
+    html.H2("Paseo"),
+    *controls,
+    html.Div(id="selected-airbnb"),
+    html.Div(id="airbnb-link"),
+    html.Button(
+        "💾 Save Likes",
+        id="save-likes",
+        n_clicks=0
+    ),
+    html.Div(id="save-status"),
+    dash_table.DataTable(
+        id="airbnb-table",
+        data=df.to_dict("records"),
+        columns = FACEBOOK_COLUMNS if args.site == "facebook" else AIRBNB_COLUMNS,
         hidden_columns=["listingId", "url"],
         css=[{
             "selector": ".show-hide",
@@ -208,6 +239,18 @@ app.layout = html.Div([
                 "minWidth": "540px",
                 "maxWidth": "540px",
             },
+            {
+                "if":{"column_id":"monthlyRent"},
+                "width":"90px",
+            },
+            {
+                "if":{"column_id":"title"},
+                "width":"500px",
+            },
+            {
+                "if":{"column_id":"city"},
+                "width":"140px",
+            }
         ],
         # style_table={
         #     "height": "700px",      # or whatever height you want
@@ -227,7 +270,10 @@ app.layout = html.Div([
     )
 ])
 
-callbacks.register_callbacks(app)
+callbacks.register_callbacks(
+    app,
+    args
+)
 
 if __name__ == "__main__":
     app.run(
