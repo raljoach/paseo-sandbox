@@ -1,96 +1,125 @@
+import json;
 import pandas as pd
-from pathlib import Path
 from model.likes import load_likes
-from model.paths import (predictions_path, features_path)
-
-def load_dataframe(
-    site="airbnb",
-    source="short-term",
-    current_listing=None
-):
-    #
-    # Load best available dataset
-    #
-
-    prediction_file = predictions_path(site, source)
-    feature_file = features_path(site, source)
-    print("Prediction file:", prediction_file)
-    print("Feature file:", feature_file)
-
-    if prediction_file.exists():
-        prediction_time = prediction_file.stat().st_mtime
-        feature_time = feature_file.stat().st_mtime
-
-        if prediction_time >= feature_time:
-            print("Loading predictions: ", prediction_file)
-            df = pd.read_json(prediction_file)
-
-        elif feature_file.exists():
-            print("Loading newest features: ", feature_file)
-            df = pd.read_json(feature_file)
-
-    elif feature_file.exists():
-        print("Loading features: ", feature_file)
-        df = pd.read_json(feature_file)
-
-    else:
-
-        print(
-            "New data location not found. "
-            "Checking legacy paths..."
-        )
-
-        legacy_features = (
-            Path("data")
-            / "processed"
-            / f"{site}_medellin_features.json"
-        )
-
-        legacy_predictions = (
-            Path("data")
-            / "processed"
-            / f"{site}_predictions.json"
-        )
+from common.metadata import create_prefix
 
 
-        if legacy_predictions.exists():
+def get_file(input_file):
+    contents = json.load(
+        open(input_file)
+    )
+    return contents
 
-            print(
-                f"Loading legacy predictions: {legacy_predictions}"
-            )
+def get_metadata(contents):
+    return contents["metadata"]
+    
 
-            df = pd.read_json(
-                legacy_predictions
-            )
+def get_listings(contents):
+    return pd.DataFrame(
+        contents["listings"]
+    )
+
+DEFAULT_COLUMNS = {
+    "predictedLike": "",
+    "likeProbability": None,
+}
 
 
-        elif legacy_features.exists():
+    
+def load_dataframe(input_file):
+    contents = get_file(input_file)
+    # print(contents)
+    listings = get_listings(contents)
+    # print(listings)
+    print(input_file)
+    metadata = get_metadata(contents)
+    print(metadata)
+    prefix = create_prefix(metadata)
 
-            print(
-                f"Loading legacy features: {legacy_features}"
-            )
 
-            df = pd.read_json(
-                legacy_features
-            )
+    # #
+    # # Load best available dataset
+    # #
 
-        else:
+    # prediction_file = predictions_path(site, source)
+    # feature_file = features_path(site, source)
+    # print("Prediction file:", prediction_file)
+    # print("Feature file:", feature_file)
 
-            raise Exception(
-                f"No data found for {site}/{source}"
-            )
+    # if prediction_file.exists():
+    #     prediction_time = prediction_file.stat().st_mtime
+    #     feature_time = feature_file.stat().st_mtime
+
+    #     if prediction_time >= feature_time:
+    #         print("Loading predictions: ", prediction_file)
+    #         df = pd.read_json(prediction_file)
+
+    #     elif feature_file.exists():
+    #         print("Loading newest features: ", feature_file)
+    #         df = pd.read_json(feature_file)
+
+    # elif feature_file.exists():
+    #     print("Loading features: ", feature_file)
+    #     df = pd.read_json(feature_file)
+
+    # else:
+
+    #     print(
+    #         "New data location not found. "
+    #         "Checking legacy paths..."
+    #     )
+
+    #     legacy_features = (
+    #         Path("data")
+    #         / "processed"
+    #         / f"{site}_medellin_features.json"
+    #     )
+
+    #     legacy_predictions = (
+    #         Path("data")
+    #         / "processed"
+    #         / f"{site}_predictions.json"
+    #     )
+
+
+    #     if legacy_predictions.exists():
+
+    #         print(
+    #             f"Loading legacy predictions: {legacy_predictions}"
+    #         )
+
+    #         df = pd.read_json(
+    #             legacy_predictions
+    #         )
+
+
+    #     elif legacy_features.exists():
+
+    #         print(
+    #             f"Loading legacy features: {legacy_features}"
+    #         )
+
+    #         df = pd.read_json(
+    #             legacy_features
+    #         )
+
+    #     else:
+
+    #         raise Exception(
+    #             f"No data found for {site}/{source}"
+    #         )
 
     #
     # Normalize IDs
     #
 
-    df["id"] = df["id"].astype(str)
-    df["listingId"] = df["id"].astype(str)
+    listings["id"] = listings["id"].astype(str)
+    listings["listingId"] = listings["id"].astype(str)
     #
     # UI hyperlink column
     #
 
-    df["idLink"] = df.apply(
+    listings["idLink"] = listings.apply(
         lambda r:
             f'[{r["listingId"]}]({r["url"]})',
         axis=1
@@ -102,9 +131,12 @@ def load_dataframe(
 
     likes = load_likes()
 
-    df["like"] = (
-        df["id"]
-        .map(likes)
+    listings["like"] = (
+        listings["id"]
+        .astype(str)
+        .map(
+            lambda x: likes.get(x, {}).get("label", "")
+        )
         .fillna("")
     )
 
@@ -113,26 +145,26 @@ def load_dataframe(
     # Current Airbnb marker
     #
 
-    df["is_current"] = False
+    listings["is_current"] = False
 
-    if current_listing:
+    # if current_listing:
 
-        df["is_current"] = (
-            df["id"]
-            .astype(str)
-            ==
-            str(current_listing)
-        )
+    #     listings["is_current"] = (
+    #         listings["id"]
+    #         .astype(str)
+    #         ==
+    #         str(current_listing)
+    #     )
 
 
     #
     # Prediction formatting
     #
 
-    if "predictedLike" in df:
+    if "predictedLike" in listings:
 
-        df["predictedLike"] = (
-            df["predictedLike"]
+        listings["predictedLike"] = (
+            listings["predictedLike"]
             .astype(str)
             .str.upper()
             .replace({
@@ -144,11 +176,11 @@ def load_dataframe(
             })
         )
 
-    if "likeProbability" in df:
+    if "likeProbability" in listings:
 
-        df["likeProbability"] = (
+        listings["likeProbability"] = (
             pd.to_numeric(
-                df["likeProbability"],
+                listings["likeProbability"],
                 errors="coerce"
             )
             .round(2)
@@ -160,84 +192,83 @@ def load_dataframe(
     #
 
     if (
-        "rating" in df.columns and
-        "perNight" in df.columns
+        "rating" in listings.columns and
+        "perNight" in listings.columns
     ):
-        df["core_value"] = (
-            df["rating"] /
-            df["perNight"]
+        listings["core_value"] = (
+            listings["rating"] /
+            listings["perNight"]
         )
     else:
-        df["core_value"] = None
+        listings["core_value"] = None
 
-
+    for col, default in DEFAULT_COLUMNS.items():
+        if col not in listings.columns:
+            listings[col] = default
     #
     # Ensure columns exist
     #
 
-    if site == "airbnb":
-        required = [
-            "listingId",
-            "url",
-            "description",
+    FEATURE_REQUIREMENTS = {
+        "short-term-stay": [
+            "nightlyRent",
             "rating",
-            "reviews",
-            "perNight",
-            "bedrooms",
-            "bathrooms",
-            "ratingBucket",
-            "valueScore",
-            "predictedLike",
-            "likeProbability",
-        ]
-    else:
-        required = [
-            "monthlyRent",
+            "reviewCount",
             "bedrooms",
             "bathrooms",
             "propertyType",
-            "city",
+            "amenities",
+            "predictedLike",
+            "likeProbability"
+        ],
+        "long-term-stay": [
+            "monthlyRent",
+            "bedrooms",
+            "bathrooms",
             "propertySize",
-            "title"#,
-            # "isFurnished",
-            # "hasParking",
-            # "allowsPets",
-            # "hasBalcony",
-            # "hasElevator",
+            "propertyType",
+            "predictedLike",
+            "likeProbability"
         ]
-
+    }
+    required = FEATURE_REQUIREMENTS[
+        metadata["listingType"]
+    ]
     for col in required:
+        if col not in listings.columns:
+            listings[col] = None
 
-        if col not in df.columns:
-            df[col] = None
 
-
-    print('COLUMNS LOADED: \n', df.columns.tolist())
-    print(f"Rows: {len(df)}")
+    print('COLUMNS LOADED: \n', listings.columns.tolist())
+    print(f"Rows: {len(listings)}")
     print()
 
-    for col in [
+    diagnostic_columns = [
         "monthlyRent",
+        "nightlyRent",
         "bedrooms",
         "bathrooms",
         "propertySize",
         "propertyType",
-        "city"#,
-        # "isFurnished",
-        # "hasParking",
-        # "allowsPets",
-        # "hasBalcony",
-        # "hasElevator",
-    ]:
+        "city",
+        "rating",
+        "reviewCount"
+    ]
+
+
+    for col in diagnostic_columns:
+
+        if col not in listings.columns:
+            continue
 
         empty = (
-            df[col]
+            listings[col]
             .isna()
             .sum()
         )
 
         blank = (
-            df[col]
+            listings[col]
             .astype(str)
             .str.strip()
             .eq("")
@@ -249,6 +280,6 @@ def load_dataframe(
         print(
             f"{col:15}"
             f"{total_missing:4} missing"
-            f" ({100*total_missing/len(df):5.1f}%)"
+            f" ({100*total_missing/len(listings):5.1f}%)"
         )
-    return df
+    return prefix, metadata, listings

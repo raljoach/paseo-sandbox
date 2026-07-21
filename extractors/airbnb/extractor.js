@@ -1,3 +1,36 @@
+function getSearchMetadata() {
+    const url = new URL(window.location.href);
+
+    const path = url.pathname;
+
+    // /s/Medellin--Colombia/homes
+    const match = path.match(/\/s\/([^/]+)\/homes/);
+
+    let city = "unknown";
+    let country = "unknown";
+
+    if (match) {
+        const location = match[1];
+
+        const parts = location.split("--");
+
+        city = parts[0];
+        country = parts[1] || "";
+    }
+
+    const query = url.searchParams;
+
+    return {
+        source: "airbnb",
+        listingType: "short-term-stay",
+        city: city.toLowerCase(),
+        country: country.toLowerCase(),
+        checkin: query.get("checkin"),
+        checkout: query.get("checkout"),
+        scrapedAt: new Date().toISOString()
+    };
+}
+
 function formula(perNight, rating, reviewCount, roomCount, bathCount){
   
   const result = 
@@ -338,17 +371,18 @@ async function processListingDetails(url){
     
           // Metadata
           data = result.metaData
-          roomType = data.roomType
-          lat = data.listingLat 
-          long = data.listingLng
-          listLoc = data.listingLat + ", " + data.listingLng
-          accuracyRating = nullSwapForZero(data.accuracyRating)
-          checkinRating = nullSwapForZero(data.checkinRating)
-          cleanlinessRating = nullSwapForZero(data.cleanlinessRating)
-          communicationRating = nullSwapForZero(data.communicationRating)
-          locationRating = nullSwapForZero(data.locationRating)
-          valueRating =nullSwapForZero(data.valueRating)
-          guestSatisfactionOverall = nullSwapForZero(data.guestSatisfactionOverall)
+          console.log("METADATA of LISTING: ", data)
+          roomType = data?.roomType
+          lat = data?.listingLat 
+          long = data?.listingLng
+          listLoc = data?.listingLat + ", " + data?.listingLng
+          accuracyRating = nullSwapForZero(data?.accuracyRating)
+          checkinRating = nullSwapForZero(data?.checkinRating)
+          cleanlinessRating = nullSwapForZero(data?.cleanlinessRating)
+          communicationRating = nullSwapForZero(data?.communicationRating)
+          locationRating = nullSwapForZero(data?.locationRating)
+          valueRating =nullSwapForZero(data?.valueRating)
+          guestSatisfactionOverall = nullSwapForZero(data?.guestSatisfactionOverall)
           
     
           bedsCount = result.bedsCount;
@@ -870,6 +904,15 @@ async function get(rows){
 }
 
 async function extract(){
+  const metadata = getSearchMetadata();
+  const rows = await extractData();
+  return {
+      metadata,
+      listings: rows
+  };
+}
+
+async function extractData(){
   const rows = []
   await get(rows)
   //console.log('BEFORE Mapping -> FIRST 3 ROWS: ', rows.slice(0, 3));
@@ -900,12 +943,12 @@ async function extract(){
         checkIn: row.checkIn,
         checkOut: row.checkOut,
         
-        accuracyRating: row.accuracyRating,
-        cleanlinessRating: row.cleanlinessRating,
-        communicationRating: row.communicationRating,
-        locationRating: row.locationRating,
-        valueRating: row.valueRating,
-        guestRating: row.guestRating,
+        accuracyRating: row?.accuracyRating,
+        cleanlinessRating: row?.cleanlinessRating,
+        communicationRating: row?.communicationRating,
+        locationRating: row?.locationRating,
+        valueRating: row?.valueRating,
+        guestRating: row?.guestRating,
         debug: row.debug
 
 
@@ -1855,8 +1898,21 @@ function decide(rows){
   // TODO: Empty
 }
 function output(rows){
+  const metadata = getSearchMetadata();
+
+  const timestamp = new Date()
+      .toISOString()
+      .replace(/[-:]/g,"")
+      .replace(/\..+/,"")
+      .replace("T","T");
+
+  const baseName =
+  `${metadata.source}_${metadata.city}_${metadata.country}_${metadata.checkin}_${timestamp}`;
+  
+  
   /* ---------------- CSV ---------------- */
-  const filename = `airbnb_listings_${Date.now()}.csv`;
+  const filename = `${baseName}.csv`;
+
   const toCSV = (data) => {
     const headers = Object.keys(data[0]);
   
@@ -1879,18 +1935,21 @@ function output(rows){
   a1.download = filename;
   a1.click();
 
-  const filename2 = `airbnb_listings_${Date.now()}.json`;
+  /* ---------------- JSON ---------------- */
+  const filename2 = `${baseName}.json`;
+  const jsonOutput = {
+      metadata,
+      listings: rows
+  };
 
-//   fs.writeFileSync(filename2, JSON.stringify(data, null, 2), 'utf-8');
-    const json = JSON.stringify(rows, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename2;
-    a.click();
-  console.log('✅ JSON written:', filename);
+  const json = JSON.stringify(jsonOutput,null,2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename2;
+  a.click();
+  console.log('✅ JSON written:', filename2);
 }
 async function doStuff(){
   //-------------------Phase 0---------
@@ -2159,14 +2218,10 @@ async function doStuff(){
 
 // chrome runner
 // (async () => {
-
-//     const rows = await extract();
+//     console.log(getSearchMetadata());
+//     const rows = await extractData();
 
 //     console.log(rows);
 //     output(rows)
 
 // })();
-
-// module.exports = {
-//     extract
-// };

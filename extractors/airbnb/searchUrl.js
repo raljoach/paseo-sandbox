@@ -62,5 +62,5 @@ function createSearchUrl({
 }
 
 module.exports = {
-    createSearchUrl,
+    createSearchUrl
 };

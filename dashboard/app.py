@@ -5,28 +5,35 @@ from dashboard import callbacks
 from model.likes import load_likes
 from dashboard.figures import create_value_graph
 from dash import dcc
-from dashboard.data import load_dataframe
+from dashboard.data import load_dataframe, get_file, get_listings, get_metadata
 import argparse
 
 app = Dash(__name__)
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "--site",
-    default="airbnb"
-)
-
-parser.add_argument(
-    "--source",
-    default="short-term"
+    "--from-file",
+    required=True
 )
 
 args = parser.parse_args()
-print("SITE =", args.site)
-print("SOURCE =", args.source)
-df = load_dataframe(
-    site=args.site,
-    source=args.source
+file = args.from_file
+print("LOADING file: ", file)
+# df = pd.read_json(
+#     args.from_file
+# )
+
+contents = get_file(file)
+metadata = get_metadata(contents)
+listing_type = metadata["listingType"]
+source = metadata["source"]
+df = get_listings(contents)
+IS_SHORT_TERM = (
+    listing_type == "short-term-stay"
+)
+
+IS_LONG_TERM = (
+    listing_type == "long-term-rental"
 )
 
 # print("Likes loaded:", len(likes))
@@ -105,7 +112,7 @@ FACEBOOK_COLUMNS = [
 # Controls
 # -------------------------
 
-if args.site == "airbnb":
+if IS_SHORT_TERM:
 
     controls = [
 
@@ -174,7 +181,11 @@ app.layout = html.Div([
     dash_table.DataTable(
         id="airbnb-table",
         data=df.to_dict("records"),
-        columns = FACEBOOK_COLUMNS if args.site == "facebook" else AIRBNB_COLUMNS,
+        columns = (
+            AIRBNB_COLUMNS
+            if IS_SHORT_TERM
+            else FACEBOOK_COLUMNS
+        ),
         hidden_columns=["listingId", "url"],
         css=[{
             "selector": ".show-hide",

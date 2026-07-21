@@ -1,48 +1,46 @@
 const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
-const { stringify } = require("csv-stringify/sync");
-const { score } = require("./scorer");
-const { summarize } = require("../../analysis/stats");
-const { addFeatures } = require("../../analysis/features");
 const { createSearchUrl } = require("./searchUrl");
-const { processRows } = require("./process");
+const { createPrefix} = require('../../common/metadata')
 
+
+function writeFile(payload){
+    const prefix =
+        createPrefix(payload.metadata);
+
+    const filename =
+        `${prefix}.json`;
+
+    const inputDir =
+        path.join(__dirname, "../../data/input");
+
+    fs.mkdirSync(inputDir, {
+        recursive: true
+    });
+
+    const outputFile =
+        path.join(inputDir, filename);
+
+    fs.writeFileSync(
+        outputFile,
+        JSON.stringify(payload,null,2)
+    );
+
+    console.log(
+        `Saved ${outputFile}`
+    );
+
+    return outputFile;
+}
 async function run() {
     const args = process.argv.slice(2);
-
-    const fromFile = args.includes("--from-file");
-
-    if (fromFile) {
-
-        console.log(
-            "Processing existing extractor output..."
-        );
-
-
-        const rows = JSON.parse(
-            fs.readFileSync(
-                path.join(
-                    __dirname,
-                    "../../data/input/airbnb_listings_1783883713465.json"
-                )
-            )
-        );
-
-
-        processRows(rows);
-
-        return;
-    }
-
     const [
-    destination,
-    checkin,
-    checkout,
-    flex
-    ] = args.filter(x => x !== "--from-file");
-
-
+        destination,
+        checkin,
+        checkout,
+        flex
+    ] = args;
     if (!destination) {
         console.error(
             "Usage: node browser.js <destination> [checkin] [checkout] [flex]"
@@ -58,13 +56,13 @@ async function run() {
     });
 
     const browser = await chromium.launch({
-        headless: true
+        headless: false
     });
 
     const page = await browser.newPage();
-    // page.on("console", msg => {
-    //     console.log("BROWSER:", msg.text());
-    // });
+    page.on("console", msg => {
+        console.log("BROWSER:", msg.text());
+    });
     const flexDays = Number(flex || 0);
 
     const searchUrl = createSearchUrl({
@@ -101,7 +99,7 @@ async function run() {
 
     // await page.waitForTimeout(10000);
 
-    let rows = await page.evaluate(async (code) => {
+    let payload = await page.evaluate(async (code) => {
 
         // execute extractor.js INSIDE Chrome
         eval(code);
@@ -111,8 +109,8 @@ async function run() {
 
     }, extractorCode);
     await browser.close();
-    process(rows);
-
+    outputFile = writeFile(payload);
+    console.log(outputFile);
 }
 
 run().catch(console.error);

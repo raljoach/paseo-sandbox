@@ -10,7 +10,7 @@ async function main() {
 
     const args = process.argv.slice(2);
    
-    let source = "short-term";
+    let source = "short-term-stay";
 
     const sourceIndex = args.indexOf("--source");
 

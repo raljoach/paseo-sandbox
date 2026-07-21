@@ -1,21 +1,31 @@
 import pandas as pd
 from pathlib import Path
 from joblib import load
-from model.paths import MODEL_FILE
+from model.paths import model_file
 from model.preprocessing import (
     FEATURES,
     prepare_features,
 )
 
-PREDICTIONS = (
-    Path(__file__).parent.parent
-    / "data"
-    / "processed"
-    / "airbnb_predictions.json"
-)
+
+def load_model(listing_type):
+    path = model_file(listing_type)
+    if not path.exists():
+        raise Exception(
+            f"""
+No model found for listing type:
+{listing_type}
+
+Expected:
+{path}
+
+Train a model first.
+"""
+        )
+
+    return load(path)
 
 def classify_probability(p):
-
     if p >= .80:
         return "YES"
 
@@ -24,12 +34,7 @@ def classify_probability(p):
 
     return ""
 
-
-
-def load_model():
-    return load(MODEL_FILE)
-
-def generate_predictions(listings):
+def generate_predictions(listingType, listings):
     listings = listings.drop(
             columns=[
                 "idLink"
@@ -38,7 +43,7 @@ def generate_predictions(listings):
         )
 
     listings["id"] = listings["id"].astype(str)
-    model = load_model()
+    model = load_model(listingType)
     predictions = listings.copy()
 
     features_df = prepare_features(listings)

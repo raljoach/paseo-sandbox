@@ -1,57 +1,34 @@
-import argparse
-
 from dashboard.data import load_dataframe
 from model.predictor import generate_predictions
-from model.paths import predictions_path
+from model.paths import file_path, model_exists
 
-def run_predictions(site, source):
-    df = load_dataframe(
-        site=site,
-        source=source
+def run_predictions(input_file):
+    prefix, metadata, listings = load_dataframe(
+        input_file
+    )
+    listingType = metadata['listingType']
+    if not model_exists(listingType):
+        print(
+            f"No model found for {listingType}. "
+            "Skipping prediction."
+        )
+        return None
+    predictions = generate_predictions(metadata, listings)
+    predictions_file = file_path(
+        "predictions",
+        prefix
     )
 
-    predictions = generate_predictions(df)
-
-    output = predictions_path(
-        source,
-        site
-    )
-
-    output.parent.mkdir(
+    predictions_file.parent.mkdir(
         parents=True,
         exist_ok=True
     )
 
     predictions.to_json(
-        output,
+        predictions_file,
         orient="records",
         indent=2
     )
 
-    print(f"Saved {len(predictions)} predictions to {output}")
-
-
-def main():
-
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument(
-        "--site",
-        required=True
-    )
-
-    parser.add_argument(
-        "--source",
-        required=True
-    )
-
-    args = parser.parse_args()
-
-    run_predictions(
-        args.site,
-        args.source
-    )
-
-
-if __name__ == "__main__":
-    main()
+    print(f"Saved {len(predictions)} predictions to {predictions_file}")
+    return predictions_file

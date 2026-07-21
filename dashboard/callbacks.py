@@ -5,10 +5,15 @@ from dash import Input, Output, State, html
 from dashboard.figures import create_value_graph
 from model.trainer import train
 from model.predictor import generate_predictions
-from dashboard.data import load_dataframe
+from dashboard.data import load_dataframe, get_file, get_metadata, get_listings
 from model.likes import load_likes
 from dashboard.filters import apply_filters
-from model.paths import (predictions_path, features_path, LIKES)
+from model.paths import (
+    rank_file,
+    features_file,
+    likes_file,
+)
+from common.metadata import create_prefix
 
 def register_callbacks(app, args):
 
@@ -38,7 +43,11 @@ def register_callbacks(app, args):
 
 
     def save_likes(n_clicks, rows):
+        metadata = get_metadata(
+            get_file(args.from_file)
+        )
 
+        prefix = create_prefix(metadata)
         existing = load_likes()
         updated_count = 0
         for row in rows:
@@ -72,7 +81,10 @@ def register_callbacks(app, args):
                 "Need more YES/NO labels before predictions can be generated."
             )
 
-        features = pd.read_json(features_path)
+        file = features_file(prefix)
+        print('LOADING: ', file)
+        contents = get_file(file)
+        features = get_listings(contents)
 
         # remove UI-only columns
 
@@ -109,24 +121,21 @@ def register_callbacks(app, args):
         rating_filter,
         current_listing,
     ):
-        print("update_table SITE =", args.site)
-        print("update_table SOURCE =", args.source)
-        df = load_dataframe(
-            site=args.site,
-            source=args.source
+        prefix, metadata, listings = load_dataframe(
+            args.from_file
         )
 
-        df = apply_filters(
-            df,
+        listings = apply_filters(
+            listings,
             rating_filter,
             current_listing
         )
 
-        df = (
-            df.sort_values("core_value", ascending=False)
+        listings = (
+            listings.sort_values("core_value", ascending=False)
             .reset_index(drop=True)
         )
-        return df.to_dict("records")
+        return listings.to_dict("records")
 
     #
     # GRAPH FILTERS
@@ -152,31 +161,28 @@ def register_callbacks(app, args):
         metric,
         current_listing
     ):
-        print("update_graph SITE =", args.site)
-        print("update_graph SOURCE =", args.source)
-        df = load_dataframe(
-            site=args.site,
-            source=args.source
+        prefix, metadata, listings = load_dataframe(
+            args.from_file
         )
 
-        df["is_current"] = False
+        listings["is_current"] = False
 
         if current_listing:
-            df["is_current"] = (
-                df["listingId"]
+            listings["is_current"] = (
+                listings["listingId"]
                 .astype(str)
                 == str(current_listing)
             )
 
 
 
-        df = apply_filters(
-            df,
+        listings = apply_filters(
+            listings,
             rating_filter,
             current_listing
         )
 
-        return create_value_graph(df, metric)
+        return create_value_graph(listings, metric)
 
         # if rating_filter != "ALL":
 

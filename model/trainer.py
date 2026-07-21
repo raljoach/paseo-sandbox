@@ -3,28 +3,32 @@ from sklearn.linear_model import LogisticRegression
 from pathlib import Path
 from model.likes import load_likes
 from joblib import dump
-from model.paths import MODEL_FILE
+from model.paths import (
+    features_file,
+    model_file
+)
 from model.evaluate import evaluate
+from dashboard.data import (
+    get_file,
+    get_listings
+)
 
 from model.preprocessing import (
     FEATURES,
     prepare_features,
 )
 
-DATA = (
-    Path(__file__).parent.parent
-    / "data"
-    / "processed"
-    / "airbnb_medellin_features.json"
-)
-
 MIN_LABELS = 20
 MIN_PER_CLASS = 5
 
 
-def train():
-    print('LOADING: ', DATA)
-    listings = pd.read_json(DATA)
+
+
+def train(prefix):
+    file = features_file(prefix)
+    print('LOADING: ', file)
+    contents = get_file(file)
+    listings = get_listings(contents)
     listings = prepare_features(listings)
     listings["id"] = (
         listings["id"]
@@ -95,5 +99,5 @@ def train():
         y
     )
     evaluate(model)
-    dump(model, MODEL_FILE)
+    dump(model, model_file(prefix))
     return model
