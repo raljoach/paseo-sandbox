@@ -116,10 +116,12 @@ def register_callbacks(app, args):
         Output("airbnb-table", "data"),
         Input("rating-filter", "value"),
         Input("current-airbnb", "value"),
+        Input("destination-filter","value")
     )
     def update_table(
         rating_filter,
-        current_listing,
+        current_airbnb,
+        destination_filter
     ):
         prefix, metadata, listings = load_dataframe(
             args.from_file
@@ -128,7 +130,8 @@ def register_callbacks(app, args):
         listings = apply_filters(
             listings,
             rating_filter,
-            current_listing
+            current_airbnb,
+            destination_filter
         )
 
         listings = (
@@ -142,24 +145,17 @@ def register_callbacks(app, args):
     #
 
     @app.callback(
-        Output(
-            "airbnb-value-graph",
-            "figure"
-        ),
-        Input(
-            "rating-filter",
-            "value"
-        ),
-        Input(
-            "metric-selector",
-            "value"
-        ),
-        Input("current-airbnb", "value")
+        Output("airbnb-value-graph", "figure"),
+        Input("destination-filter", "value"),
+        Input("rating-filter", "value"),
+        Input("metric-selector", "value"),
+        Input("current-airbnb", "value"),
     )
     def update_graph(
+        destination_filter,
         rating_filter,
         metric,
-        current_listing
+        current_airbnb,
     ):
         prefix, metadata, listings = load_dataframe(
             args.from_file
@@ -167,19 +163,18 @@ def register_callbacks(app, args):
 
         listings["is_current"] = False
 
-        if current_listing:
+        if current_airbnb:
             listings["is_current"] = (
                 listings["listingId"]
                 .astype(str)
-                == str(current_listing)
+                == str(current_airbnb)
             )
-
-
 
         listings = apply_filters(
             listings,
             rating_filter,
-            current_listing
+            current_airbnb,
+            destination_filter
         )
 
         return create_value_graph(listings, metric)

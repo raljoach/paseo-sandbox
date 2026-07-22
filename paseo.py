@@ -33,12 +33,13 @@ def run_combine(files):
         current_metadata = get_metadata(contents)
         if metadata is None:
             metadata = current_metadata.copy()
-
+        destination = current_metadata.get("destination")
+        current_listings = get_listings(contents)
+        current_listings["destination"] = destination
         listings.extend(
-            get_listings(contents).to_dict(orient="records")
+            current_listings.to_dict(orient="records")
         )
 
-        destination = current_metadata.get("destination")
         if destination:
             destinations.append(destination)
 

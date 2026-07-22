@@ -1,6 +1,9 @@
-def apply_filters(df, rating_filter, current_listing):
+def apply_filters(df, rating_filter, current_listing, destination_filter):
 
     df["is_current"] = False
+
+    if destination_filter != "ALL":
+        df = df[df["destination"] == destination_filter]
 
     if current_listing:
         df["is_current"] = (

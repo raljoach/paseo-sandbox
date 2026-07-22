@@ -28,6 +28,15 @@ metadata = get_metadata(contents)
 listing_type = metadata["listingType"]
 source = metadata["source"]
 df = get_listings(contents)
+destination_options = [
+    {"label": "All Destinations", "value": "ALL"}
+]
+
+destination_options += [
+    {"label": d, "value": d}
+    for d in sorted(df["destination"].dropna().unique())
+]
+
 IS_SHORT_TERM = (
     listing_type == "short-term-stay"
 )
@@ -111,18 +120,23 @@ FACEBOOK_COLUMNS = [
 # -------------------------
 # Controls
 # -------------------------
-
+destination_control = dcc.Dropdown(
+    id="destination-filter",
+    options=destination_options,
+    value="ALL",
+    style={
+        "display": "none"
+        if len(destination_options) <= 2
+        else "block"
+    }
+)
 if IS_SHORT_TERM:
-
     controls = [
-
         html.H3("Graph Controls"),
-
         dcc.Input(
             id="current-airbnb",
             placeholder="Current Airbnb ID"
         ),
-
         dcc.Dropdown(
             id="rating-filter",
             options=[
@@ -134,7 +148,7 @@ if IS_SHORT_TERM:
             ],
             value="ALL"
         ),
-
+        destination_control,
         dcc.Dropdown(
             id="metric-selector",
             options=[
@@ -163,9 +177,11 @@ else:
                 {"label":"> $1100","value":"999999"},
             ],
             value="ALL"
-        )
-
+        ),
+        destination_control
     ]
+
+
 
 app.layout = html.Div([
     html.H2("Paseo"),
