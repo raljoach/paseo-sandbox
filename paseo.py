@@ -6,6 +6,15 @@ import webbrowser
 import time
 from model.run_predictions import run_predictions
 import socket
+import json
+from datetime import datetime
+from dashboard.data import (
+    get_file,
+    get_metadata,
+    get_listings,
+)
+
+from common.metadata import create_prefix
 
 PIPELINE = {
     "scrape": "process",
@@ -14,20 +23,88 @@ PIPELINE = {
     "dashboard": None,
 }
 
+def run_combine(files):
+    metadata = None
+    listings = []
+    destinations = []
+
+    for file in files:
+        contents = get_file(file)
+        current_metadata = get_metadata(contents)
+        if metadata is None:
+            metadata = current_metadata.copy()
+
+        listings.extend(
+            get_listings(contents).to_dict(orient="records")
+        )
+
+        destination = current_metadata.get("destination")
+        if destination:
+            destinations.append(destination)
+
+    print(destinations)
+    for d in destinations:
+        print(type(d), d)
+        
+    #
+    # Update metadata
+    #
+
+    metadata.pop("destination", None)
+    metadata.pop("city", None)
+    metadata.pop("country", None)
+
+    metadata["destinations"] = sorted(set(destinations))
+
+    metadata["combined"] = True
+    metadata["scrapedAt"] = (
+        datetime.utcnow()
+        .isoformat(timespec="seconds")
+        + "Z"
+    )
+
+    #
+    # Build output filename
+    #
+
+    timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+    prefix = f"{metadata['source']}_multi_{timestamp}"
+
+    output = (
+        Path(__file__).parent
+        / "data"
+        / "processed"
+        / f"{prefix}_features.json"
+    )
+
+    payload = {
+        "metadata": metadata,
+        "listings": listings,
+    }
+
+    with open(output, "w") as f:
+        json.dump(payload, f, indent=2)
+
+    print(f"Combined {len(files)} files")
+    print(f"Total listings: {len(listings)}")
+    print(f"Saved {output}")
+    return str(output)
 
 def dashboard_running():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         return s.connect_ex(("127.0.0.1", 8050)) == 0
 
 def run_scraper(args):
+    artifacts = []
     root = Path(__file__).resolve().parent
-    cmd = [
-        "node",
-        f"extractors/{args.site}/browser.js"
-    ]
+    for destination in args.destination:
 
-    if args.site == "airbnb":
-        cmd.append(args.destination)
+        cmd = [
+            "node",
+            f"extractors/{args.site}/browser.js",
+            destination,
+        ]
+
         if args.checkin:
             cmd.append(args.checkin)
 
@@ -37,17 +114,27 @@ def run_scraper(args):
         if args.flex:
             cmd.append(str(args.flex))
 
-    result = subprocess.run(
-        cmd, 
-        cwd=root, 
-        check=True,
-        capture_output=True,
-        text=True)
-    print(result.stdout)
 
-    artifact = result.stdout.strip().splitlines()[-1]
+        result = subprocess.run(
+            cmd,
+            cwd=root,
+            check=True,
+            capture_output=True,
+            text=True
+        )
 
-    return artifact
+        print(result.stdout)
+
+        artifact = (
+            result.stdout
+            .strip()
+            .splitlines()[-1]
+        )
+
+        artifacts.append(artifact)
+
+
+    return artifacts
 
 def run_processor(input_file):
     root = Path(__file__).resolve().parent
@@ -117,7 +204,9 @@ def main():
     )
 
     scrape.add_argument(
-        "--destination"
+        "--destination",
+        nargs="+",
+        required=True
     )
 
     scrape.add_argument(
@@ -210,21 +299,40 @@ def main():
     #     run_dashboard(args)
 
     current_phase = args.phase
-    artifact = getattr(args, "from_file", None)
+    artifacts = [getattr(args, "from_file", None)]
     while current_phase:
         print(f"\n=== {current_phase.upper()} ===")
         if current_phase == "scrape":
-            artifact = run_scraper(args)
+            artifacts = run_scraper(args)
+            # processed = []
+            # for artifact in artifacts:
+            #     processed.append(
+            #         run_processor(artifact)
+            #     )
+
+            # combined = run_combine(processed)
+
+            # artifact = combined
 
         elif current_phase == "process":
-            artifact = run_processor(artifact)
+            # artifact = run_processor(artifact)
+            processed = [
+                run_processor(a)
+                for a in artifacts
+            ]
+
+            artifacts = [
+                run_combine(processed)
+            ]
 
         elif current_phase == "predict":
-            file = run_predict(artifact)
-            if file is not None:
-                artifact = file
+            (artifact,) = artifacts
+            prediction = run_predict(artifact)
+            if prediction is not None:
+                artifacts = [prediction]
 
         elif current_phase == "dashboard":
+            (artifact,) = artifacts
             run_dashboard(artifact)
 
         current_phase = PIPELINE[current_phase]

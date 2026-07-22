@@ -5,24 +5,24 @@ function getSearchMetadata() {
 
     // /s/Medellin--Colombia/homes
     const match = path.match(/\/s\/([^/]+)\/homes/);
-
-    let city = "unknown";
-    let country = "unknown";
+    let destination = "Unknown";
 
     if (match) {
-        const location = match[1];
+        const slug = match[1];
 
-        const parts = location.split("--");
+        const parts = slug.split("--");
 
         city = parts[0];
         country = parts[1] || "";
+
+        destination =
+            `${city}${country ? ", " + country : ""}`;
     }
-
     const query = url.searchParams;
-
     return {
         source: "airbnb",
         listingType: "short-term-stay",
+        destination,
         city: city.toLowerCase(),
         country: country.toLowerCase(),
         checkin: query.get("checkin"),
