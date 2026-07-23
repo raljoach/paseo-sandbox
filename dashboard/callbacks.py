@@ -14,9 +14,9 @@ from model.paths import (
     likes_file,
 )
 from common.metadata import create_prefix
+from model.models.registry import get_model
 
 def register_callbacks(app, args):
-
     #
     # SAVE USER LIKES + TRAIN MODEL
     #
@@ -116,28 +116,34 @@ def register_callbacks(app, args):
         Output("airbnb-table", "data"),
         Input("rating-filter", "value"),
         Input("current-airbnb", "value"),
-        Input("destination-filter","value")
+        Input("destination-filter","value"),
+        Input("model-selector","value")
     )
     def update_table(
         rating_filter,
         current_airbnb,
-        destination_filter
+        destination_filter,
+        model_name
     ):
         prefix, metadata, listings = load_dataframe(
             args.from_file
         )
 
-        listings = apply_filters(
-            listings,
-            rating_filter,
-            current_airbnb,
-            destination_filter
-        )
+        
 
-        listings = (
-            listings.sort_values("core_value", ascending=False)
-            .reset_index(drop=True)
-        )
+        # listings = (
+        #     listings.sort_values("core_value", ascending=False)
+        #     .reset_index(drop=True)
+        # )
+        model = get_model(model_name)
+        listings = model.evaluate(listings)
+        listings = apply_filters(
+                    listings,
+                    rating_filter,
+                    current_airbnb,
+                    destination_filter
+                )
+        listings = model.sort(listings)
         return listings.to_dict("records")
 
     #
@@ -150,12 +156,14 @@ def register_callbacks(app, args):
         Input("rating-filter", "value"),
         Input("metric-selector", "value"),
         Input("current-airbnb", "value"),
+        Input("model-selector","value")
     )
     def update_graph(
         destination_filter,
         rating_filter,
         metric,
         current_airbnb,
+        model_name
     ):
         prefix, metadata, listings = load_dataframe(
             args.from_file
@@ -176,8 +184,13 @@ def register_callbacks(app, args):
             current_airbnb,
             destination_filter
         )
+        model = get_model(model_name)
+        return model.create_graph(
+            listings,
+            metric
+        )
 
-        return create_value_graph(listings, metric)
+        # return create_value_graph(listings, metric)
 
         # if rating_filter != "ALL":
 

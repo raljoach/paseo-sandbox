@@ -120,6 +120,12 @@ FACEBOOK_COLUMNS = [
 # -------------------------
 # Controls
 # -------------------------
+model_control = dcc.Dropdown(
+    options=[
+        {"label":"Value","value":"value"},
+        {"label":"Likes","value":"likes"},
+    ]
+)
 destination_control = dcc.Dropdown(
     id="destination-filter",
     options=destination_options,
@@ -149,6 +155,7 @@ if IS_SHORT_TERM:
             value="ALL"
         ),
         destination_control,
+        model_control,
         dcc.Dropdown(
             id="metric-selector",
             options=[
@@ -178,7 +185,8 @@ else:
             ],
             value="ALL"
         ),
-        destination_control
+        destination_control,
+        model_control
     ]
 
 
