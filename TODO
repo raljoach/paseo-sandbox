@@ -1,0 +1,12 @@
+TODAY:
+[x] Multi destination scraping
+[x] Destination filter
+[x] Model dropdown
+[x] Model registry
+
+NEXT:
+[ ] BaseModel abstraction
+[ ] Refactor ValueModel
+[ ] Add OptimizationModel
+[ ] Dynamic model columns
+[ ] Dashboard table integration
