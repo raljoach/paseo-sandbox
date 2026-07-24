@@ -1,0 +1,38 @@
+Feature Roadmap
+
+Core
+[x] Multi destination scraping
+[x] Destination filter
+[x] Model dropdown
+[x] Model registry
+[x] BaseModel abstraction
+[x] Dynamic model columns
+
+Architecture
+[ ] Listing hierarchy
+[ ] ListingFactory
+[ ] Domain-specific value()
+[ ] Listing.columns()
+
+Optimization
+[ ] AverageModel
+[ ] ObjectiveModel
+[ ] Hard constraints
+[ ] Soft constraints
+[ ] Constraint editor
+[ ] Pareto optimization
+
+UI
+[ ] Wishlist
+[ ] Wishlist filter
+[ ] Map view
+[ ] Dashboard explanations
+[ ] Horizon integration
+
+Learning Signals
+[ ] Likes
+[ ] Wishlist
+[ ] Click history
+[ ] Booking history
+[ ] HistoricalModel
+[ ] PreferredModel

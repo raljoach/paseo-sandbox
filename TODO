@@ -1,12 +1,11 @@
-TODAY:
-[x] Multi destination scraping
-[x] Destination filter
-[x] Model dropdown
-[x] Model registry
+Vision
+    Optimization
 
-NEXT:
-[x] BaseModel abstraction
-[x] Refactor ValueModel
-[x] Add OptimizationModel
-[x] Dynamic model columns
-[x] Dashboard table integration
+Feature
+    ObjectiveModel
+
+Today's Tasks
+    [ ] Create ObjectiveModel
+    [ ] Hard constraints
+    [ ] Soft constraints
+    [ ] Graph

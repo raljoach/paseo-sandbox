@@ -1,0 +1,14 @@
+Feature: ObjectiveModel
+[ ] Create ObjectiveModel
+[ ] Add hard constraints
+[ ] Add soft constraints
+[ ] Objective score
+[ ] Graph
+[ ] Table integration
+
+Feature: Wishlist
+[ ] Wishlist column
+[ ] Save wishlist
+[ ] Wishlist filter
+[ ] Wishlist persistence
+[ ] Feed into HistoricalModel

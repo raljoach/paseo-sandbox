@@ -1,0 +1,20 @@
+Vision Roadmap
+[ ] Optimization: Reduce the user's search space until a decision becomes obvious.
+
+Phase 1
+    Airbnb decision support
+
+Phase 2
+    Long-term rentals
+
+Phase 3
+    Flights
+
+Phase 4
+    GPS Horizons watch
+
+Phase 5
+    End-to-end travel planning
+
+Phase 6
+    AI travel assistant
