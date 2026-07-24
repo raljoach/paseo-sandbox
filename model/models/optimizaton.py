@@ -1,13 +1,13 @@
 from model.models.base_model import BaseModel
 from dashboard.figures import create_value_graph
 
-class ValueModel(BaseModel):
-    name = "Value"
-    metric="valueScore"
+class OptimizationModel(BaseModel):
+    name = "optimization"
+    metric = "optimizationScore"
     def evaluate(self, df):
-        """
-        Returns dataframe ranked by value score.
-        """
+        df[self.metric] = (
+            df["valueScore"]
+        )
         return (
             df.sort_values(
                 self.metric,
@@ -19,7 +19,7 @@ class ValueModel(BaseModel):
     def model_columns(self):
         return [
             {
-                "name": "Value",
+                "name": "Optimization",
                 "id": self.metric,
                 "type": "numeric",
                 "format": {

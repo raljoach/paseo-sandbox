@@ -1,17 +1,15 @@
 # model/models/__init__.py
-
-from . import value
-from . import likes
-from . import maximization
+from model.models.value import ValueModel
+from model.models.optimizaton import OptimizationModel
 
 MODELS = {
-    value.id: value,
-    likes.id: likes,
-    maximization.id: maximization,
+"value": ValueModel(),
+"optimization": OptimizationModel()
+
 }
 
-
 def get_model(name):
+    print('look for model: ', name)
     return MODELS[name]
 
 

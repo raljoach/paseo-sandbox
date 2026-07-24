@@ -15,6 +15,7 @@ from model.paths import (
 )
 from common.metadata import create_prefix
 from model.models.registry import get_model
+from dashboard.columns import get_table_columns
 
 def register_callbacks(app, args):
     #
@@ -113,6 +114,7 @@ def register_callbacks(app, args):
         )
     
     @app.callback(
+        Output("airbnb-table", "columns"),    
         Output("airbnb-table", "data"),
         Input("rating-filter", "value"),
         Input("current-airbnb", "value"),
@@ -143,8 +145,8 @@ def register_callbacks(app, args):
                     current_airbnb,
                     destination_filter
                 )
-        listings = model.sort(listings)
-        return listings.to_dict("records")
+        columns = get_table_columns(metadata["listingType"] == "short-term-stay", model_name)
+        return columns, listings.to_dict("records")
 
     #
     # GRAPH FILTERS
@@ -154,14 +156,12 @@ def register_callbacks(app, args):
         Output("airbnb-value-graph", "figure"),
         Input("destination-filter", "value"),
         Input("rating-filter", "value"),
-        Input("metric-selector", "value"),
         Input("current-airbnb", "value"),
         Input("model-selector","value")
     )
     def update_graph(
         destination_filter,
         rating_filter,
-        metric,
         current_airbnb,
         model_name
     ):
@@ -178,16 +178,17 @@ def register_callbacks(app, args):
                 == str(current_airbnb)
             )
 
-        listings = apply_filters(
-            listings,
-            rating_filter,
-            current_airbnb,
-            destination_filter
-        )
+        
         model = get_model(model_name)
+        listings = model.evaluate(listings)
+        listings = apply_filters(
+                    listings,
+                    rating_filter,
+                    current_airbnb,
+                    destination_filter
+                )
         return model.create_graph(
-            listings,
-            metric
+            listings
         )
 
         # return create_value_graph(listings, metric)

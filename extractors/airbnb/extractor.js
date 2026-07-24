@@ -308,12 +308,12 @@ async function resolveListingDetails(url) {
 
       if (obj.__typename === "SectionDataContainer" && obj.sectionId && obj.sectionId === "OVERVIEW_DEFAULT_V2") {
           result.title = obj.sectionData.title
-          // console.log('different title:', result.title)
+          console.log('different title:', result.title)
       }
 
       if (obj.__typename === "PdpTitleSection" && obj.title) {
           result.description = obj.title
-          // console.log('different description:', result.description)
+          console.log('different description:', result.description)
       }
 
       if (obj.__typename === "Amenity" && obj.title && !obj.available) {
@@ -526,6 +526,7 @@ async function parseCard(card) {
   const subtitles = subTitleElems
     .map(el => el.innerText.replace(/\s+/g, ' ').trim());
   console.log('subtitles', subTitleElems)
+  console.log('subtitles text', subtitles)
   console.log('rating row',  card.querySelector('[data-testid="listing-card-title"]').nextSibling.nextSibling.nextSibling)
    // document.querySelectorAll('[data-testid="listing-card-title"]').forEach(title => {
 //   console.log(title);
@@ -680,8 +681,8 @@ else{
     url,
     // ...areaInfo,
     title,
-    description: subtitles[1],
-    details: subtitles[2],
+    description: subtitles[0],
+   //details: subtitles[2],
     checkIn,
     checkOut,
     price: priceText,

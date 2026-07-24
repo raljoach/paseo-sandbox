@@ -5,8 +5,8 @@ TODAY:
 [x] Model registry
 
 NEXT:
-[ ] BaseModel abstraction
-[ ] Refactor ValueModel
-[ ] Add OptimizationModel
-[ ] Dynamic model columns
-[ ] Dashboard table integration
+[x] BaseModel abstraction
+[x] Refactor ValueModel
+[x] Add OptimizationModel
+[x] Dynamic model columns
+[x] Dashboard table integration

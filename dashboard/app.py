@@ -7,6 +7,7 @@ from dashboard.figures import create_value_graph
 from dash import dcc
 from dashboard.data import load_dataframe, get_file, get_listings, get_metadata
 import argparse
+from dashboard.columns import get_table_columns
 
 app = Dash(__name__)
 parser = argparse.ArgumentParser()
@@ -57,74 +58,79 @@ IS_LONG_TERM = (
 
 df = df.drop(columns=["debug"], errors="ignore")
 
-AIRBNB_COLUMNS = [
-            {
-                "name": "Like",
-                "id": "like",
-                "presentation": "dropdown",
-            },
-            {
-                "name": "Prediction",
-                "id": "predictedLike",
-            },
-            {
-                "name": "Probability",
-                "id": "likeProbability",
-                "type": "numeric",
-                "format": {
-                    "specifier": ".2f"
-                },
-            },
-            {
-                "name": "ID",
-                "id": "idLink",
-                "presentation": "markdown",
-            },
-            {"name": "Description", "id": "description"},
-            {"name": "Rating", "id": "rating"},
-            {"name": "Reviews", "id": "reviews"},
-            {"name": "$/night", "id": "perNight"},
-            {"name": "Rooms", "id": "bedrooms"},
-            {"name": "Baths", "id": "bathrooms"},
-            {"name": "Bucket", "id": "ratingBucket"},
-            {"name": "Score", "id": "valueScore","type": "numeric",
-                "format": {
-                    "specifier": ".3f"
-                },},
-        ]
 
-FACEBOOK_COLUMNS = [
-    {"name":"Like","id":"like","presentation":"dropdown"},
-    {"name":"Prediction","id":"predictedLike"},
-    {"name":"Probability","id":"likeProbability"},
-    {
-        "name":"ID",
-        "id":"idLink",
-        "presentation":"markdown"
-    },
-    {"name":"Title","id":"title"},
-    {"name":"Price","id":"monthlyRent"},
-    {"name":"Beds","id":"bedrooms"},
-    {"name":"Baths","id":"bathrooms"},
-    {"name":"Size","id":"propertySize"},
-    {"name":"City","id":"city"},
-    {"name":"Type","id":"propertyType"},
 
-    # {"name":"Furnished","id":"isFurnished"},
-    # {"name":"Parking","id":"hasParking"},
-    # {"name":"Pets","id":"allowsPets"},
-    # {"name":"Balcony","id":"hasBalcony"},
-    # {"name":"Elevator","id":"hasElevator"},
-]
+# AIRBNB_COLUMNS = [
+#             {
+#                 "name": "Like",
+#                 "id": "like",
+#                 "presentation": "dropdown",
+#             },
+#             {
+#                 "name": "Prediction",
+#                 "id": "predictedLike",
+#             },
+#             {
+#                 "name": "Probability",
+#                 "id": "likeProbability",
+#                 "type": "numeric",
+#                 "format": {
+#                     "specifier": ".2f"
+#                 },
+#             },
+#             {
+#                 "name": "ID",
+#                 "id": "idLink",
+#                 "presentation": "markdown",
+#             },
+#             {"name": "Description", "id": "description"},
+#             {"name": "Rating", "id": "rating"},
+#             {"name": "Reviews", "id": "reviews"},
+#             {"name": "$/night", "id": "perNight"},
+#             {"name": "Rooms", "id": "bedrooms"},
+#             {"name": "Baths", "id": "bathrooms"},
+#             {"name": "Bucket", "id": "ratingBucket"},
+#             {"name": "Score", "id": "valueScore","type": "numeric",
+#                 "format": {
+#                     "specifier": ".3f"
+#                 },},
+#         ]
+
+# FACEBOOK_COLUMNS = [
+#     {"name":"Like","id":"like","presentation":"dropdown"},
+#     {"name":"Prediction","id":"predictedLike"},
+#     {"name":"Probability","id":"likeProbability"},
+#     {
+#         "name":"ID",
+#         "id":"idLink",
+#         "presentation":"markdown"
+#     },
+#     {"name":"Title","id":"title"},
+#     {"name":"Price","id":"monthlyRent"},
+#     {"name":"Beds","id":"bedrooms"},
+#     {"name":"Baths","id":"bathrooms"},
+#     {"name":"Size","id":"propertySize"},
+#     {"name":"City","id":"city"},
+#     {"name":"Type","id":"propertyType"},
+
+#     # {"name":"Furnished","id":"isFurnished"},
+#     # {"name":"Parking","id":"hasParking"},
+#     # {"name":"Pets","id":"allowsPets"},
+#     # {"name":"Balcony","id":"hasBalcony"},
+#     # {"name":"Elevator","id":"hasElevator"},
+# ]
 
 # -------------------------
 # Controls
 # -------------------------
+default_model = "value"
 model_control = dcc.Dropdown(
+    id="model-selector",
     options=[
         {"label":"Value","value":"value"},
-        {"label":"Likes","value":"likes"},
-    ]
+        {"label":"Optimization","value":"optimization"},
+    ],
+    value=default_model
 )
 destination_control = dcc.Dropdown(
     id="destination-filter",
@@ -156,15 +162,6 @@ if IS_SHORT_TERM:
         ),
         destination_control,
         model_control,
-        dcc.Dropdown(
-            id="metric-selector",
-            options=[
-                {"label":"Rating / Night","value":"rating"},
-                {"label":"Value Score","value":"core_value"},
-            ],
-            value="core_value"
-        ),
-
         dcc.Graph(id="airbnb-value-graph")
     ]
 
@@ -205,11 +202,14 @@ app.layout = html.Div([
     dash_table.DataTable(
         id="airbnb-table",
         data=df.to_dict("records"),
-        columns = (
-            AIRBNB_COLUMNS
-            if IS_SHORT_TERM
-            else FACEBOOK_COLUMNS
-        ),
+        # columns = (
+        #     AIRBNB_COLUMNS
+        #     if IS_SHORT_TERM
+        #     else FACEBOOK_COLUMNS
+        # ),
+        # fill_width=False,
+        style_table={'width': '80%', 'margin': 'auto'},
+        columns = get_table_columns(IS_SHORT_TERM, default_model),
         hidden_columns=["listingId", "url"],
         css=[{
             "selector": ".show-hide",
@@ -256,6 +256,12 @@ app.layout = html.Div([
                 "minWidth": "80px",
                 "maxWidth": "80px",
             },
+            # {
+            #     "if": {"column_id": "valueScore"},
+            #     "width": "80px",
+            #     "minWidth": "80px",
+            #     "maxWidth": "80px",
+            # },
             {
                 "if": {"column_id": "predictedLike"},
                 "width": "95px",
@@ -269,10 +275,20 @@ app.layout = html.Div([
                 "maxWidth": "100px",
             },
             {
+                "if": {"column_id": "idLink"},
+                "width": "200px",
+                "minWidth": "200px",
+                "maxWidth": "200px",
+            },
+            {
                 "if": {"column_id": "description"},
                 "width": "540px",
                 "minWidth": "540px",
                 "maxWidth": "540px",
+            },
+            {
+                "if":{"column_id":"perNight"},
+                "width":"90px",
             },
             {
                 "if":{"column_id":"monthlyRent"},
